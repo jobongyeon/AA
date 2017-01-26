@@ -2,6 +2,7 @@ package com.library.eng;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.library.eng.service.Library;
 import com.library.eng.service.MemberService;
 
 /**
@@ -48,8 +50,8 @@ public class libraryController {
 	@RequestMapping(value="/lib/memberAdd", method=RequestMethod.GET)
 	public String memberAdd(Model model) {
 		logger.debug(this.getClass()+"회원가입 페이지 GET실행");
-		Map<String, Object> returnMap = memberService.getselectLibcodeForInsert();
-		model.addAttribute("list", returnMap.get("list"));
+		List<Library> returnMap = memberService.getselectLibcodeForInsert();
+		model.addAttribute("list", returnMap);
 		return "/memberAdd";
 	}
 	/*@RequestMapping(value="", )

@@ -61,14 +61,14 @@ body, html {
 							<input type="text" class="form-control">
 							<!-- <input type="button" value="주소확인" style="margin-left: 521px;"/> -->
 						</div>
-						<c:forEach var="l" items="${list}">
-							<div class="container, col-md-12"> 
-								도서관선택 : 
-								<select class="form-control"> 
+						<div class="container, col-md-12"> 
+							도서관선택 : 
+							<select class="form-control"> 
+								<c:forEach var="l" items="${list}">
 									<option>${l.libName}</option>
-								</select>
-							</div>
-						</c:forEach>
+								</c:forEach>
+							</select>
+						</div>					
 						<button type="submit" class="w3-btn  w3-padding-12 w3-dark-grey" style="margin-top: 20px; margin-left: 660px;">
 							회원가입
 						</button>

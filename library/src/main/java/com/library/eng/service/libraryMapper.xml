@@ -8,11 +8,10 @@
 			
 	</insert> -->
 	<select id="memberAdd"
-			parameterType="Map"
 			resultType="com.library.eng.service.Library">
 			SELECT
 				libname
 			FROM
-				Library
+				Lib
 	</select>
 </mapper>
