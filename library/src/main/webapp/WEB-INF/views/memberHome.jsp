@@ -19,7 +19,7 @@ body, html {
 }
 
 .bgimg {
-	background-image: url('/img/도서관회원가입메인페이지.jpg');
+	background-image: url('/resources/img/도서관회원가입메인페이지.jpg');
 	min-height: 100%;
 	background-position: center;
 	background-size: cover;

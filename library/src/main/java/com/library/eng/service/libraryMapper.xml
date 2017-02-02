@@ -27,7 +27,8 @@
 	<select id="selectMemberAdd"
 			resultType="com.library.eng.service.Library">
 			SELECT
-				libname
+				libname,
+				libcode
 			FROM
 				Lib
 	</select>

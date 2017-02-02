@@ -21,7 +21,7 @@ body, html {
 }
 
 .bgimg {
-	background-image: url('img/도서관회원가입페이지.jpg');
+	background-image: url('/resources/img/도서관회원가입페이지.jpg');
 	min-height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -38,7 +38,7 @@ body, html {
 					<h3 class="w3-center">회원가입</h3>
 					<hr>
 					<p>다음 여섯가지 사항을 입력해 주십시오. 입력 후 계좌로 회비 입금시 회원등급으로 승인이 됩니다.</p>
-					<form action="form.asp" target="_blank">
+					<form action="/lib/memberAdd" method="post">
 						<div class="form-group, col-md-12">
 							<label for="usr">아이디 :</label>
 							<input type="text" class="form-control" id="MEMBERID" name="MEMBERID">
@@ -69,7 +69,7 @@ body, html {
 							도서관선택 : 
 							<select class="form-control" id="LIBCODE" name="LIBCODE">
 								<c:forEach var="l" items="${list }">
-									<option>${l.LIBNAME}</option>
+									<option value="${l.LIBCODE}">${l.LIBNAME}</option>
 								</c:forEach>
 							</select>
 						</div>
