@@ -32,4 +32,15 @@
 			FROM
 				Lib
 	</select>
+	<select id="selectAdminLogin"
+			resultType="com.library.eng.service.Admin"
+			parameterType="String">
+			SELECT 
+				adminid, 
+				adminpw 
+			FROM 
+				admin 
+			WHERE 
+				adminid=#{ADMINID}
+	</select>
 </mapper>

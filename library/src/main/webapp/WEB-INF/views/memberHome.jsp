@@ -54,7 +54,7 @@ body, html {
 			</div>
 		</div>
 		<div class="w3-display-bottomleft w3-padding-large">
-			Made by<a href="/lib/memberHome" target="_blank">JBY</a>
+			Made by<a href="/lib/adminLogin" target="_blank">JBY</a>
 		</div>
 	</div>
 </body>

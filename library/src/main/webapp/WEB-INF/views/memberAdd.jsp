@@ -81,7 +81,7 @@ body, html {
 		</div>
 		<div class="w3-display-bottomleft w3-padding-large"	style="color: black">
 			Made by 
-			<a href="/lib/memberHome" target="_blank" style="color: black"> 
+			<a href="/lib/adminLogin" target="_blank" style="color: black"> 
 				JBY
 			</a>
 		</div>

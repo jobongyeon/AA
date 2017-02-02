@@ -18,14 +18,18 @@ public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private final String Member_NS = "com.library.eng.";
+	private final String NS = "com.library.eng.";
 
 	public int insertMember(Member member) {
-		logger.debug(this.getClass()+"insertMember");
-		return sqlSession.insert(Member_NS+"memberAdd", member);
+		logger.debug(this.getClass()+" insertMember");
+		return sqlSession.insert(NS+"memberAdd", member);
 	}
 	public List<Library> selectLibcodeForInsert() {
-		logger.debug(this.getClass()+"selectLibcodeForInsert");
-		return sqlSession.selectList(Member_NS+"selectMemberAdd");
+		logger.debug(this.getClass()+" selectLibcodeForInsert");
+		return sqlSession.selectList(NS+"selectMemberAdd");
+	}
+	public Admin selectAdminForLogin(String AdminId) {
+		logger.debug(this.getClass()+" MemberDao "+AdminId+" selectAdminForLogin");
+		return sqlSession.selectOne(NS+"selectAdminLogin", AdminId);
 	}
 }
