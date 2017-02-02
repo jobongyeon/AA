@@ -68,5 +68,10 @@ public class libraryController {
 		logger.debug("관리자 메인페이지 GET실행");
 		return "/adminHome";
 	}
-	
+	@RequestMapping(value="/lib/adminLogout", method=RequestMethod.GET)
+	public String adminLogout(HttpSession session){
+		logger.debug("관리자 로그아웃 GET실행");
+		session.invalidate();
+		return "/adminLogin";
+	}
 }

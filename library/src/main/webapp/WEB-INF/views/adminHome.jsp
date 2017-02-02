@@ -258,7 +258,7 @@ translateY
 					<li><a href="#services">도서관리</a></li>
 					<li><a href="#portfolio">도서대여/반납</a></li>
 					<li><a href="#pricing">회원관리</a></li>
-					<li><a href="#contact">로그아웃</a></li>
+					<li><a href="/lib/adminLogout">로그아웃</a></li>
 				</ul>
 			</div>
 		</div>
