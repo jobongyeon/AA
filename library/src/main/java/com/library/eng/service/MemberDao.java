@@ -20,11 +20,12 @@ public class MemberDao {
 	
 	private final String Member_NS = "com.library.eng.";
 
-	/*public int insertMember(Member member) {
+	public int insertMember(Member member) {
+		logger.debug(this.getClass()+"insertMember");
 		return sqlSession.insert(Member_NS+"memberAdd", member);
-	}*/
+	}
 	public List<Library> selectLibcodeForInsert() {
 		logger.debug(this.getClass()+"selectLibcodeForInsert");
-		return sqlSession.selectList(Member_NS+"memberAdd");
+		return sqlSession.selectList(Member_NS+"selectMemberAdd");
 	}
 }

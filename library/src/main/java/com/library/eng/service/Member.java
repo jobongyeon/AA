@@ -10,53 +10,54 @@ public class Member {
 	private String MEMBERADDR;
 	private String JOINDAY;
 	private String LIBCODE;
+	
 	public String getMEMBERID() {
 		return MEMBERID;
 	}
-	public void setMEMBERID(String mEMBERID) {
-		MEMBERID = mEMBERID;
+	public void setMEMBERID(String MEMBERID) {
+		this.MEMBERID = MEMBERID;
 	}
 	public String getMEMBERPW() {
 		return MEMBERPW;
 	}
-	public void setMEMBERPW(String mEMBERPW) {
-		MEMBERPW = mEMBERPW;
+	public void setMEMBERPW(String MEMBERPW) {
+		this.MEMBERPW = MEMBERPW;
 	}
 	public String getMEMBERNAME() {
 		return MEMBERNAME;
 	}
-	public void setMEMBERNAME(String mEMBERNAME) {
-		MEMBERNAME = mEMBERNAME;
+	public void setMEMBERNAME(String MEMBERNAME) {
+		this.MEMBERNAME = MEMBERNAME;
 	}
 	public String getMEMBERBIRTHDAY() {
 		return MEMBERBIRTHDAY;
 	}
-	public void setMEMBERBIRTHDAY(String mEMBERBIRTHDAY) {
-		MEMBERBIRTHDAY = mEMBERBIRTHDAY;
+	public void setMEMBERBIRTHDAY(String MEMBERBIRTHDAY) {
+		this.MEMBERBIRTHDAY = MEMBERBIRTHDAY;
 	}
 	public int getMEMBERPHONE() {
 		return MEMBERPHONE;
 	}
-	public void setMEMBERPHONE(int mEMBERPHONE) {
-		MEMBERPHONE = mEMBERPHONE;
+	public void setMEMBERPHONE(int MEMBERPHONE) {
+		this.MEMBERPHONE = MEMBERPHONE;
 	}
 	public String getMEMBERADDR() {
 		return MEMBERADDR;
 	}
-	public void setMEMBERADDR(String mEMBERADDR) {
-		MEMBERADDR = mEMBERADDR;
+	public void setMEMBERADDR(String MEMBERADDR) {
+		this.MEMBERADDR = MEMBERADDR;
 	}
 	public String getJOINDAY() {
 		return JOINDAY;
 	}
-	public void setJOINDAY(String jOINDAY) {
-		JOINDAY = jOINDAY;
+	public void setJOINDAY(String JOINDAY) {
+		this.JOINDAY = JOINDAY;
 	}
 	public String getLIBCODE() {
 		return LIBCODE;
 	}
-	public void setLIBCODE(String lIBCODE) {
-		LIBCODE = lIBCODE;
+	public void setLIBCODE(String LIBCODE) {
+		this.LIBCODE = LIBCODE;
 	}
 	@Override
 	public String toString() {

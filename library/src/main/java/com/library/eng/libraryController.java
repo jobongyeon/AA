@@ -15,20 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.library.eng.service.Library;
+import com.library.eng.service.Member;
 import com.library.eng.service.MemberService;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class libraryController {
 	@Autowired
 	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(libraryController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -54,9 +49,12 @@ public class libraryController {
 		model.addAttribute("list", returnMap);
 		return "/memberAdd";
 	}
-	/*@RequestMapping(value="", )
+	@RequestMapping(value="/lib/memberAdd", method=RequestMethod.POST)
 	public String memberAdd(Member member) {
+		logger.debug(this.getClass()+"회원가입 페이지 POST실행");
+		memberService.addMember(member);
 		
-	}*/
+		return "redirect:/memberAdd";
+	}
 	
 }

@@ -1,13 +1,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
 <mapper namespace="com.library.eng">
-	<!-- <insert id="memberAdd"
+	<insert id="memberAdd"
 			parameterType="com.library.eng.service.Member">
-			
-	</insert> -->
-	<select id="memberAdd"
+			INSERT INTO member(
+				MEMBERID,
+				MEMBERPW,
+				MEMBERNAME,
+				MEMBERBIRTHDAY,
+				MEMBERPHONE,
+				MEMBERADDR,
+				JOINDAY,
+				LIBCODE)
+			VALUES(
+				#{MEMBERID},
+				#{MEMBERPW},
+				#{MEMBERNAME},
+				#{MEMBERBIRTHDAY},
+				#{MEMBERPHONE},
+				#{MEMBERADDR},
+				now(),
+				#{LIBCODE}
+			)
+	</insert>
+	<select id="selectMemberAdd"
 			resultType="com.library.eng.service.Library">
 			SELECT
 				libname

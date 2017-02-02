@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,37 +41,39 @@ body, html {
 					<form action="form.asp" target="_blank">
 						<div class="form-group, col-md-12">
 							<label for="usr">아이디 :</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" id="MEMBERID" name="MEMBERID">
 							<!-- <input type="button" value="중복확인" style="margin-left: 521px;"/> -->
 						</div>
 						<div class="form-group, col-md-12">
 							<label for="usr">패스워드 :</label>
-							<input type="text" class="form-control">
+							<input type="password" class="form-control" id="MEMBERPW" name="MEMBERPW">
 						</div>
 						<div class="form-group, col-md-12">
 							<label for="usr">이름 :</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" id="MEMBERNAME" name="MEMBERNAME">
 						</div>
 						<div class="form-group, col-md-12">
 							<label for="usr">생년월일 :</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" id="MEMBERBIRTHDAY" name="MEMBERBIRTHDAY">
+						</div>
+						<div class="form-group, col-md-12">
+							<label for="usr">전화번호 :</label>
+							<input type="text" class="form-control" id="MEMBERPHONE" name="MEMBERPHONE">
 						</div>
 						<div class="form-group, col-md-12">
 							<label for="usr">주소 :</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" id="MEMBERADDR" name="MEMBERADDR">
 							<!-- <input type="button" value="주소확인" style="margin-left: 521px;"/> -->
 						</div>
 						<div class="container, col-md-12"> 
 							도서관선택 : 
-							<select class="form-control"> 
-								<c:forEach var="l" items="${list}">
-									<option>${l.libName}</option>
+							<select class="form-control" id="LIBCODE" name="LIBCODE">
+								<c:forEach var="l" items="${list }">
+									<option>${l.LIBNAME}</option>
 								</c:forEach>
 							</select>
-						</div>					
-						<button type="submit" class="w3-btn  w3-padding-12 w3-dark-grey" style="margin-top: 20px; margin-left: 660px;">
-							회원가입
-						</button>
+						</div>
+						<input type="submit" value="회원가입" class="w3-btn  w3-padding-12 w3-dark-grey" style="margin-top: 20px; margin-left: 660px;">
 					</form>
 					<br/>
 				</div>
@@ -79,7 +81,7 @@ body, html {
 		</div>
 		<div class="w3-display-bottomleft w3-padding-large"	style="color: black">
 			Made by 
-			<a href="http://www.w3schools.com/w3css/default.asp" target="_blank" style="color: black"> 
+			<a href="/lib/memberHome" target="_blank" style="color: black"> 
 				JBY
 			</a>
 		</div>
