@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import com.library.eng.libraryController;
 
 @Service
-public class MemberService {
+public class LibraryService {
 	@Autowired
-	private MemberDao memberDao;
+	private LibraryDao memberDao;
 	private static final Logger logger = LoggerFactory.getLogger(libraryController.class);
 	//회원가입 폼에서 도서관 리스트 보여주는 메서드
 	public List<Library> getselectLibcodeForInsert() {

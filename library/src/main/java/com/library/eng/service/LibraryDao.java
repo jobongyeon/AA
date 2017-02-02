@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.library.eng.libraryController;
 
 @Repository
-public class MemberDao {
+public class LibraryDao {
 	private static final Logger logger = LoggerFactory.getLogger(libraryController.class);
 
 	@Autowired

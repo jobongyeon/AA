@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title></title>
+<title>관리자 메인</title>
 <!-- 부트스트랩/css -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -197,43 +197,11 @@ keyframes slide { 0% {
 100%
 {
 opacity
-
-
-
-
-
-
 :
-
-
-
- 
-
-
-
 1;
 transform
-
-
-
-
-
-
 :
-
-
-
- 
-
-
-
 translateY
-
-
-
-
-
-
 (0%);
 }
 }
@@ -246,43 +214,11 @@ translateY
 100%
 {
 opacity
-
-
-
-
-
-
 :
-
-
-
- 
-
-
-
 1;
 -webkit-transform
-
-
-
-
-
-
 :
-
-
-
- 
-
-
-
 translateY
-
-
-
-
-
-
 (0%);
 }
 }
@@ -330,7 +266,7 @@ translateY
 	<!-- 공지사항 -->
 	<div class="jumbotron text-center">
 		<div class="row">
-			<img src="img/bookmark.ico" style="margin-left: -2420px;">
+			<img src="/resources/img/bookmark.ico" style="margin-left: -2420px;">
 			<div class="col-md-7" style="margin-left: 500px;">
 				<div class="panel panel-default" style="margin-top: 20px;">
 					<div class="panel-heading" style="text-align: left;">공지사항</div>
