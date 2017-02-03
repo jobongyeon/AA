@@ -27,20 +27,84 @@
 	<select id="selectMemberAdd"
 			resultType="com.library.eng.service.Library">
 			SELECT
-				libname,
-				libcode
+				LIBNAME,
+				LIBCODE
 			FROM
-				Lib
+				LIB
 	</select>
 	<select id="selectAdminLogin"
 			resultType="com.library.eng.service.Admin"
 			parameterType="String">
 			SELECT 
-				adminid, 
-				adminpw 
+				ADMINID, 
+				ADMINPW 
 			FROM 
-				admin 
+				ADMIN 
 			WHERE 
-				adminid=#{ADMINID}
+				ADMINID=#{ADMINID}
 	</select>
+	<insert id="libraryAdd"
+			parameterType="com.library.eng.service.Library">
+			INSERT INTO LIB(
+				LIBNAME, 
+				LIBLOCATION) 
+			VALUES(
+				#{LIBNAME},
+				#{LIBLOCATION}
+				) 
+	</insert>
+	<insert id="bookAdd"
+			parameterType="com.library.eng.service.Books">
+			INSERT INTO	BOOKS (
+				LIBCODE, 
+				BOOKNAME, 
+				WRITER, 
+				PUBLISHER, 
+				CATEGORY, 
+				GENRE, 
+				BOOKLOCATION)
+			VALUES(
+				#{LIBCODE},
+				#{BOOKNAME},
+				#{WRITER},
+				#{PUBLISHER},
+				#{CATEGORY},
+				#{GENRE},
+				#{BOOKLOCATION}
+				)
+	</insert>
+	<insert id="bookDelete"
+			parameterType="com.library.eng.service.Discardbooks">
+			INSERT INTO DISCARDBOOKS(
+				BOOKCODE, 
+				DISCARDREASON)
+			VALUES(
+				#{BOOKCODE},
+				#{DISCARDREASON}
+				)
+	</insert>
+	<update id="updateBookStatus"
+			parameterType="com.library.eng.service.Books">
+			UPDATE 
+				BOOKS 
+			SET 
+				CURRENTSTATUS = 'n'
+			WHERE  
+				BOOKCODE = #{BOOKCODE}
+	</update>
+	<insert id="insertRental"
+			parameterType="com.library.eng.service.Rental">
+			INSERT INTO RENTAL(
+				BOOKCODE,
+				RENTALSTARTDAY,
+				RETURNEXPECTDAY,
+				MEMBERID,
+				RETURNSTATUS)
+			VALUES(
+				#{BOOKCODE},
+				now(),
+				date_add(now(), interval 5 day),
+				#{MEMBERID},
+				'n')
+	</insert>
 </mapper>

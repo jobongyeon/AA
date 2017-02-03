@@ -4,16 +4,72 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>관리자 메인</title>
+<title>admin Rental</title>
 <!-- 부트스트랩/css -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat"	rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 대여날짜 프론트에서 보여주는 역할만 -->
+<script type="text/javascript">
+function RentalDate () {
+	var RentalDay = new Date();
+	var RentalMonth = RentalDay.getMonth()+1;
+	var RentalDate = RentalDay.getDate();
+	if ( RentalMonth < 10) RentalMonth = "0"+RentalMonth;
+	if ( RentalDate < 10) RentalDate = "0"+RentalDate;
+	document.getElementById("RentalDate").value = RentalDay.getFullYear()+"년"+RentalMonth+"월"+RentalDate+"일";
+	}
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function() {
+	RentalDate();
+});
+</script>
+<!-- 반납날짜  프론트에서 보여주는 역할만 -->
+<script type="text/javascript">
+function returnExpectDate() {
+	var day = new Date();
+	var month = day.getMonth()+1;
+	var date = day.getDate()+5;
+	if ( month < 10) month = "0"+month;
+	if ( date < 10) date = "0"+date;
+	document.getElementById("returnExpectDate").value = day.getFullYear()+"년"+month+"월"+date+"일";
+}
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function() {
+	returnExpectDate();
+});
+</script>
 <!-- 부트스트랩/css -->
-<!-- 스타일태그가 깁니다. 닫아서 사용하세요. -->
 <style>
 body {
 	font: 400 15px Lato, sans-serif;
@@ -198,11 +254,43 @@ keyframes slide { 0% {
 100%
 {
 opacity
+
+
+
+
+
+
 :
+
+
+
+ 
+
+
+
 1;
 transform
+
+
+
+
+
+
 :
+
+
+
+ 
+
+
+
 translateY
+
+
+
+
+
+
 (0%);
 }
 }
@@ -215,11 +303,43 @@ translateY
 100%
 {
 opacity
+
+
+
+
+
+
 :
+
+
+
+ 
+
+
+
 1;
 -webkit-transform
+
+
+
+
+
+
 :
+
+
+
+ 
+
+
+
 translateY
+
+
+
+
+
+
 (0%);
 }
 }
@@ -241,8 +361,8 @@ translateY
 }
 </style>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- 상단가로바 -->
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -264,62 +384,64 @@ translateY
 			</div>
 		</div>
 	</nav>
-	<!-- 공지사항 -->
-	<div class="jumbotron text-center">
-		<div class="row">
-			<img src="/resources/img/bookmark.ico" style="margin-left: -2420px;">
-			<div class="col-md-7" style="margin-left: 500px;">
-				<div class="panel panel-default" style="margin-top: 20px;">
-					<div class="panel-heading" style="text-align: left;">Jeonju English Library</div>
-					<div class="panel-body" style="color: orange; text-align: left;">
-						어서오십시오<br/><br/><br/><br/><br/>
+	<!-- 사이드바 -->
+	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px; margin-top:50px; margin-left: 150px;" id="mySidenav">
+		<br>
+		<div class="w3-container">
+			<a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding"	title="close menu">
+				<i class="fa fa-remove"></i>
+			</a> 
+			<br><br>
+			<h4 class="w3-padding-0">
+				<b>도서 대여/반납</b>
+			</h4>
+		</div>
+		<a href="/lib/adminRental" onclick="w3_close()" class="w3-padding w3-text-teal">
+			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
+			도서대여
+		</a>
+		<a href="#portfolio" onclick="w3_close()" class="w3-padding w3-text-teal">
+			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
+			도서반납
+		</a>
+	</nav>
+	<!-- 본문 -->
+	<div class="row">
+		<div class="col-md-7" style="margin-left: 450px; margin-top: 100px;">
+			<div class="panel panel-default" style="margin-top: 20px;">
+				<div class="panel-heading" style="text-align: left;">도서대여</div>
+				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 50px;">
+					<img src="/resources/img/bookmark.ico" style="margin-left: 50px;">
+					<div class="row">
+						<form action="/lib/adminRental" method="post">
+							<div class="col-sm-6 form-group" style="margin-top: -210px; margin-left: 350px; color: gray;">
+								도서코드 : <br />
+								<input class="form-control" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required>
+							</div>
+							<br /><br />
+							<div class="col-sm-6 form-group" style="margin-top: -190px; margin-left: 350px; color: gray;">
+								대여일 : <br />
+								<input id="RentalDate" class="form-control" readonly="readonly" placeholder="대여일을 선택하세요" type="text" required>
+							</div>
+							<br /><br />
+							<div class="col-sm-6 form-group" style="margin-top: -170px; margin-left: 350px; color: gray;">
+								반납예정일 : <br />
+								<input id="returnExpectDate" class="form-control" readonly="readonly" placeholder="반납예정일을 선택하세요" type="text" required>
+							</div>
+							<hr class="w3-border-grey" style="margin-left: 400px; margin-top:-50px; width: 40%">
+							<div class="col-sm-6 form-group" style="margin-top: 10px; margin-left: 350px; color: gray;">
+								회원ID : <br />
+								<input class="form-control" name="MEMBERID" placeholder="회원ID를 입력하세요" type="text" required>
+								<br />
+								<input type="radio" name="payment">선불
+								<input type="radio" name="payment">후불
+								<input class="btn pull-right" type="submit" value="대여" style="color: black;"/>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-<!-- 미구현 구간 -->
-	<!-- 도서대출현황 -->
-	<!-- <div class="row">
-		<div class="col-md-2" style="margin-left: 200px; margin-top: -45px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
-				<div class="panel-heading" style="text-align: left;">도서대출현황</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 500px;">
-					▷1<br/>
-					▷2<br/>
-					▷3<br/>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- 도서연체현황 -->
-	<!-- <div class="row">
-		<div class="col-md-8" style="margin-left: 455px; margin-top: -728px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
-				<div class="panel-heading" style="text-align: left;">도서연체현황</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 150px;">
-					▷1<br/>
-					▷2<br/>
-					▷3<br/>
-					▷4<br/>
-					▷5<br/>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- 도서폐기예정현황 -->
-	<!-- <div class="row">
-		<div class="col-md-8" style="margin-left: 455px; margin-top: -330px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
-				<div class="panel-heading" style="text-align: left;">도서폐기예정</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 100px;">
-					▷1<br/>
-					▷2<br/>
-					▷3<br/>
-				</div>
-			</div>
-		</div>
-	</div> -->
-<!-- 미구현 구간 -->
 </body>
 </html>

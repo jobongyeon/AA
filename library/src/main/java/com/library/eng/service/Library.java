@@ -7,20 +7,20 @@ public class Library {
 	public int getLIBCODE() {
 		return LIBCODE;
 	}
-	public void setLIBCODE(int lIBCODE) {
-		LIBCODE = lIBCODE;
+	public void setLIBCODE(int LIBCODE) {
+		this.LIBCODE = LIBCODE;
 	}
 	public String getLIBNAME() {
 		return LIBNAME;
 	}
-	public void setLIBNAME(String lIBNAME) {
-		LIBNAME = lIBNAME;
+	public void setLIBNAME(String LIBNAME) {
+		this.LIBNAME = LIBNAME;
 	}
 	public String getLIBLOCATION() {
 		return LIBLOCATION;
 	}
-	public void setLIBLOCATION(String lIBLOCATION) {
-		LIBLOCATION = lIBLOCATION;
+	public void setLIBLOCATION(String LIBLOCATION) {
+		this.LIBLOCATION = LIBLOCATION;
 	}
 	@Override
 	public String toString() {
