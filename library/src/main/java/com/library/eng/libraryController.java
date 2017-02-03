@@ -128,9 +128,11 @@ public class libraryController {
 	}
 	//관리자 도서대여/반납 관리 : 상단 도서대여/반납관리 - 도서대여등록
 	@RequestMapping(value="/lib/adminRental", method=RequestMethod.POST)
-	public String adminRental(Rental rental) {
+	public String adminRental(Rental rental, Books book) {
 		logger.debug("관리자 도서대여/반납 도서대여 POST실행");
 		service.addRental(rental);
+		service.updateBookStatus(book);
+		/*service.selectRentalCode(rental);*/
 		return "redirect:adminHome";
 	}
 }

@@ -54,7 +54,7 @@ public class LibraryService {
 	public int deleteBook(Discardbooks discardbooks) {
 		return libDao.deleteBook(discardbooks);
 	}
-	//도서폐기시 도서의 대여상태수정
+	//도서의 대여상태수정
 	public int updateBookStatus(Books book) {
 		return libDao.updateBookStatus(book);
 	}
@@ -62,4 +62,8 @@ public class LibraryService {
 	public int addRental(Rental rental) {
 		return libDao.insertRental(rental);
 	}
+	/*public String selectRentalCode(Rental rental) {
+		return null;
+		use LAST_INSERT_ID();
+	}*/
 }

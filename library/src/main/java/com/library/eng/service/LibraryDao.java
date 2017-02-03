@@ -50,11 +50,12 @@ public class LibraryDao {
 		logger.debug(" MemberDao deleteBook");
 		return sqlSession.insert(NS+"bookDelete", discardbooks);
 	}
-	//도서폐기시 도서대여상태수정
+	//도서대여상태수정
 	public int updateBookStatus(Books book) {
 		logger.debug(" MemberDao updateBookStatus");
 		return sqlSession.update(NS+"updateBookStatus", book);
 	}
+	//도서대여
 	public int insertRental(Rental rental) {
 		logger.debug(" MemberDao insertRental");
 		return sqlSession.insert(NS+"insertRental", rental);
