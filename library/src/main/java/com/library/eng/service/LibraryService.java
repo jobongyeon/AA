@@ -62,8 +62,11 @@ public class LibraryService {
 	public int addRental(Rental rental) {
 		return libDao.insertRental(rental);
 	}
-	/*public String selectRentalCode(Rental rental) {
-		return null;
-		use LAST_INSERT_ID();
+	/*public Cost selectCostForPayment(Cost cost) {
+		return libDao.selectCost(cost);
 	}*/
+	public int addPayment(Payment payment) {
+		return libDao.insertPayment(payment);
+	}
+	
 }

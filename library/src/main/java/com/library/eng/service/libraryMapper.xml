@@ -93,7 +93,9 @@
 				BOOKCODE = #{BOOKCODE}
 	</update>
 	<insert id="insertRental"
-			parameterType="com.library.eng.service.Rental">
+			parameterType="com.library.eng.service.Rental"
+			useGeneratedKeys="true"
+			keyProperty="RENTALCODE">
 			INSERT INTO RENTAL(
 				BOOKCODE,
 				RENTALSTARTDAY,
@@ -106,5 +108,26 @@
 				date_add(now(), interval 5 day),
 				#{MEMBERID},
 				'n')
+	</insert>
+	<!-- <select id="selectCost"
+			resultType="com.library.eng.service.Cost">
+			SELECT
+				MEMBERRENTALCOST,
+				NONMEMBERRENTALCOST
+			FROM
+				COST
+	</select> -->
+	<insert id="insertPayment"
+			parameterType="com.library.eng.service.Payment">
+			INSERT INTO	PAYMENT(
+				RENTALCODE,
+				MEMBERID,
+				PAYMENTDAY,
+				PAYMENTPRICE)
+			VALUES(
+				#{RENTALCODE},
+				#{MEMBERID},
+				#{PAYMENTDAY},
+				#{PAYMENTPRICE})
 	</insert>
 </mapper>

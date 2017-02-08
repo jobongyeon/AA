@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +16,17 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+
+<script type="text/javascript">
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    });
+});
+</script>
 <!-- 대여날짜 프론트에서 보여주는 역할만 -->
 <script type="text/javascript">
 function RentalDate () {
@@ -76,7 +88,6 @@ body {
 	line-height: 1.8;
 	color: #818181;
 }
-
 h2 {
 	font-size: 24px;
 	text-transform: uppercase;
@@ -84,7 +95,6 @@ h2 {
 	font-weight: 600;
 	margin-bottom: 30px;
 }
-
 h4 {
 	font-size: 19px;
 	line-height: 1.375em;
@@ -92,57 +102,46 @@ h4 {
 	font-weight: 400;
 	margin-bottom: 30px;
 }
-
 .jumbotron {
 	background-color: #f4511e;
 	color: #fff;
 	padding: 100px 25px;
 	font-family: Montserrat, sans-serif;
 }
-
 .container-fluid {
 	padding: 60px 50px;
 }
-
 .bg-grey {
 	background-color: #f6f6f6;
 }
-
 .logo-small {
 	color: #f4511e;
 	font-size: 50px;
 }
-
 .logo {
 	color: #f4511e;
 	font-size: 200px;
 }
-
 .thumbnail {
 	padding: 0 0 15px 0;
 	border: none;
 	border-radius: 0;
 }
-
 .thumbnail img {
 	width: 100%;
 	height: 100%;
 	margin-bottom: 10px;
 }
-
 .carousel-control.right, .carousel-control.left {
 	background-image: none;
 	color: #f4511e;
 }
-
 .carousel-indicators li {
 	border-color: #f4511e;
 }
-
 .carousel-indicators li.active {
 	background-color: #f4511e;
 }
-
 .item h4 {
 	font-size: 19px;
 	line-height: 1.375em;
@@ -150,27 +149,22 @@ h4 {
 	font-style: italic;
 	margin: 70px 0;
 }
-
 .item span {
 	font-style: normal;
 }
-
 .panel {
 	border: 1px solid #f4511e;
 	border-radius: 0 !important;
 	transition: box-shadow 0.5s;
 }
-
 .panel:hover {
 	box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
 }
-
 .panel-footer .btn:hover {
 	border: 1px solid #f4511e;
 	background-color: #fff !important;
 	color: #f4511e;
 }
-
 .panel-heading {
 	color: #fff !important;
 	background-color: #f4511e !important;
@@ -181,26 +175,21 @@ h4 {
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 }
-
 .panel-footer {
 	background-color: white !important;
 }
-
 .panel-footer h3 {
 	font-size: 32px;
 }
-
 .panel-footer h4 {
 	color: #aaa;
 	font-size: 14px;
 }
-
 .panel-footer .btn {
 	margin: 15px 0;
 	background-color: #f4511e;
 	color: #fff;
 }
-
 .navbar {
 	margin-bottom: 0;
 	background-color: #f4511e;
@@ -212,31 +201,25 @@ h4 {
 	border-radius: 0;
 	font-family: Montserrat, sans-serif;
 }
-
 .navbar li a, .navbar .navbar-brand {
 	color: #fff !important;
 }
-
 .navbar-nav li a:hover, .navbar-nav li.active a {
 	color: #f4511e !important;
 	background-color: #fff !important;
 }
-
 .navbar-default .navbar-toggle {
 	border-color: transparent;
 	color: #fff !important;
 }
-
 footer .glyphicon {
 	font-size: 20px;
 	margin-bottom: 20px;
 	color: #f4511e;
 }
-
 .slideanim {
 	visibility: hidden;
 }
-
 .slide {
 	animation-name: slide;
 	-webkit-animation-name: slide;
@@ -244,53 +227,21 @@ footer .glyphicon {
 	-webkit-animation-duration: 1s;
 	visibility: visible;
 }
-
 @
 keyframes slide { 0% {
 	opacity: 0;
 	transform: translateY(70%);
 }
-
 100%
 {
 opacity
-
-
-
-
-
-
 :
-
-
-
  
-
-
-
 1;
 transform
-
-
-
-
-
-
 :
-
-
-
  
-
-
-
 translateY
-
-
-
-
-
-
 (0%);
 }
 }
@@ -299,47 +250,16 @@ translateY
 	opacity: 0;
 	-webkit-transform: translateY(70%);
 }
-
 100%
 {
 opacity
-
-
-
-
-
-
 :
-
-
-
  
-
-
-
 1;
 -webkit-transform
-
-
-
-
-
-
 :
-
-
-
  
-
-
-
 translateY
-
-
-
-
-
-
 (0%);
 }
 }
@@ -353,7 +273,6 @@ translateY
 		margin-bottom: 35px;
 	}
 }
-
 @media screen and (max-width: 480px) {
 	.logo {
 		font-size: 150px;
@@ -415,7 +334,7 @@ translateY
 					<div class="row">
 						<form action="/lib/adminRental" method="post">
 							<div class="col-sm-6 form-group" style="margin-top: -210px; margin-left: 350px; color: gray;">
-								도서코드 : <br />
+								*도서코드 : <br />
 								<input class="form-control" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required>
 							</div>
 							<br /><br />
@@ -430,11 +349,16 @@ translateY
 							</div>
 							<hr class="w3-border-grey" style="margin-left: 400px; margin-top:-50px; width: 40%">
 							<div class="col-sm-6 form-group" style="margin-top: 10px; margin-left: 350px; color: gray;">
-								회원ID : <br />
+								*회원ID : <br />
 								<input class="form-control" name="MEMBERID" placeholder="회원ID를 입력하세요" type="text" required>
-								<br />
-								<input type="radio" name="payment">선불
-								<input type="radio" name="payment">후불
+								<!-- 선불 / 후불 선택 : 
+								<input type="radio" >선불
+								<input type="radio" >후불 -->
+								*결제일<br />
+								<input type="text" id="testDatepicker" name="PAYMENTDAY">
+								<br />*일반회원 / 정회원 선택 : <br />
+								<input type="radio" value="1500" name="PAYMENTPRICE">일반회원
+								<input type="radio" value="1000" name="PAYMENTPRICE">정회원
 								<input class="btn pull-right" type="submit" value="대여" style="color: black;"/>
 							</div>
 						</form>

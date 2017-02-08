@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.library.eng.service.Admin;
 import com.library.eng.service.Books;
+import com.library.eng.service.Cost;
 import com.library.eng.service.Discardbooks;
 import com.library.eng.service.Library;
 import com.library.eng.service.Member;
+import com.library.eng.service.Payment;
 import com.library.eng.service.Rental;
 import com.library.eng.service.LibraryService;
 
@@ -128,11 +130,14 @@ public class libraryController {
 	}
 	//관리자 도서대여/반납 관리 : 상단 도서대여/반납관리 - 도서대여등록
 	@RequestMapping(value="/lib/adminRental", method=RequestMethod.POST)
-	public String adminRental(Rental rental, Books book) {
+	public String adminRental(Rental rental, Books book, Cost cost, Payment payment) {
 		logger.debug("관리자 도서대여/반납 도서대여 POST실행");
 		service.addRental(rental);
+		logger.debug(rental.toString());
 		service.updateBookStatus(book);
-		/*service.selectRentalCode(rental);*/
+		/*service.selectCostForPayment(cost);*/
+		payment.setRENTALCODE(rental.getRENTALCODE());
+		service.addPayment(payment);
 		return "redirect:adminHome";
 	}
 }
