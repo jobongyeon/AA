@@ -14,9 +14,9 @@
 
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://127.0.0.1:3306/library?useUnicod=true&amp;characterEncoding=euckr" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="java0000" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/jby9215?useUnicod=true&amp;characterEncoding=euckr" />
+		<beans:property name="username" value="jby9215" />
+		<beans:property name="password" value="whqhddus2015!" />
 	</beans:bean>
 
 	<!-- db 연결 후 커넥션풀 생성 -->

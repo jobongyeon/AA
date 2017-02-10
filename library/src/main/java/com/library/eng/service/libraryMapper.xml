@@ -27,10 +27,10 @@
 	<select id="selectMemberAdd"
 			resultType="com.library.eng.service.Library">
 			SELECT
-				LIBNAME,
-				LIBCODE
+				libname,
+				libcode
 			FROM
-				LIB
+				lib
 	</select>
 	<select id="selectAdminLogin"
 			resultType="com.library.eng.service.Admin"
@@ -39,13 +39,13 @@
 				ADMINID, 
 				ADMINPW 
 			FROM 
-				ADMIN 
+				admin 
 			WHERE 
 				ADMINID=#{ADMINID}
 	</select>
 	<insert id="libraryAdd"
 			parameterType="com.library.eng.service.Library">
-			INSERT INTO LIB(
+			INSERT INTO lib(
 				LIBNAME, 
 				LIBLOCATION) 
 			VALUES(
@@ -55,7 +55,7 @@
 	</insert>
 	<insert id="bookAdd"
 			parameterType="com.library.eng.service.Books">
-			INSERT INTO	BOOKS (
+			INSERT INTO	books (
 				LIBCODE, 
 				BOOKNAME, 
 				WRITER, 
@@ -75,7 +75,7 @@
 	</insert>
 	<insert id="bookDelete"
 			parameterType="com.library.eng.service.Discardbooks">
-			INSERT INTO DISCARDBOOKS(
+			INSERT INTO discardbooks(
 				BOOKCODE, 
 				DISCARDREASON)
 			VALUES(
@@ -86,7 +86,7 @@
 	<update id="updateBookStatus"
 			parameterType="com.library.eng.service.Books">
 			UPDATE 
-				BOOKS 
+				books 
 			SET 
 				CURRENTSTATUS = 'n'
 			WHERE  
@@ -96,7 +96,7 @@
 			parameterType="com.library.eng.service.Rental"
 			useGeneratedKeys="true"
 			keyProperty="RENTALCODE">
-			INSERT INTO RENTAL(
+			INSERT INTO rental(
 				BOOKCODE,
 				RENTALSTARTDAY,
 				RETURNEXPECTDAY,
@@ -119,7 +119,7 @@
 	</select> -->
 	<insert id="insertPayment"
 			parameterType="com.library.eng.service.Payment">
-			INSERT INTO	PAYMENT(
+			INSERT INTO	payment(
 				RENTALCODE,
 				MEMBERID,
 				PAYMENTDAY,
