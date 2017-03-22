@@ -4,33 +4,30 @@
 <mapper namespace="com.library.eng">
 	<insert id="memberAdd"
 			parameterType="com.library.eng.service.Member">
-			INSERT INTO member(
-				MEMBERID,
-				MEMBERPW,
-				MEMBERNAME,
-				MEMBERBIRTHDAY,
-				MEMBERPHONE,
-				MEMBERADDR,
-				JOINDAY,
-				LIBCODE)
-			VALUES(
-				#{MEMBERID},
-				#{MEMBERPW},
-				#{MEMBERNAME},
-				#{MEMBERBIRTHDAY},
-				#{MEMBERPHONE},
-				#{MEMBERADDR},
-				now(),
-				#{LIBCODE}
-			)
+			INSERT INTO member
+						(MEMBERID,
+						MEMBERPW,
+						MEMBERNAME,
+						MEMBERBIRTHDAY,
+						MEMBERPHONE,
+						MEMBERADDR,
+						JOINDAY,
+						LIBCODE)
+			VALUES
+						(#{MEMBERID},
+						#{MEMBERPW},
+						#{MEMBERNAME},
+						#{MEMBERBIRTHDAY},
+						#{MEMBERPHONE},
+						#{MEMBERADDR},
+						now(),
+						#{LIBCODE})
 	</insert>
 	<select id="selectMemberAdd"
 			resultType="com.library.eng.service.Library">
-			SELECT
-				libname,
-				libcode
-			FROM
-				lib
+			SELECT	libname,
+					libcode
+			FROM	lib
 	</select>
 	<select id="selectAdminLogin"
 			resultType="com.library.eng.service.Admin"
