@@ -43,13 +43,16 @@
 	</nav>
 	
 	<!-- 공지사항 -->
-	<div class="jumbotron text-center">
+	<div class="jumbotron">
 		<div class="row">
-			<img src="/resources/img/bookmark.ico" style="margin-left: -2420px;">
-			<div class="col-md-7" style="margin-left: 500px;">
-				<div class="panel panel-default" style="margin-top: 20px;">
-					<div class="panel-heading" style="text-align: left;">Jeonju English Library</div>
-					<div class="panel-body" style="color: orange; text-align: left;">
+			<div class="col-md-2"></div>
+			<div class="col-md-2">
+				<img src="/resources/img/bookmark.ico">
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Jeonju English Library</div>
+					<div class="panel-body" style="color: gray;">
 						어서오십시오<br/><br/><br/><br/><br/>
 					</div>
 				</div>
