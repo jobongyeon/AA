@@ -73,6 +73,7 @@ public class libraryController {
 		logger.debug("관리자 메인페이지 GET실행");
 		//관리자 메인페이지 : 도서대출현황
 		List<Rental> RentalList = service.selectRentalList();
+		logger.debug("화면으로 보낼 미납자 리스트내용 : "+RentalList.toString());
 		model.addAttribute("RentalList", RentalList);
 		return "/adminHome";
 	}

@@ -1,13 +1,17 @@
 package com.library.eng.service;
 
 public class Rental {
-	private int BOOKCODE;
-	private String RENTALSTARTDAY;
-	private String RETURNEXPECTDAY;
-	private String MEMBERID;
-	private String RETURNSTATUS;
-	private int RENTALCODE;
-	private String BOOKNAME;
+	private int BOOKCODE;				//도서코드
+	private String RENTALSTARTDAY;		//도서대여
+	private String RETURNEXPECTDAY;		//도서반납예정일
+	private String MEMBERID;			//도서대여자아이디
+	private String MEMBERNAME;			//도서대여자이름
+	private int MEMBERPHONE;			//도서대여자전화번호
+	private String RETURNSTATUS;		//도서대여/반납상태
+	private int RENTALCODE;				//도서대여코드
+	private String BOOKNAME;			//도서이름
+	
+	
 	public int getRENTALCODE() {
 		return RENTALCODE;
 	}
@@ -50,11 +54,24 @@ public class Rental {
 	public void setBOOKNAME(String bOOKNAME) {
 		BOOKNAME = bOOKNAME;
 	}
+	public int getMEMBERPHONE() {
+		return MEMBERPHONE;
+	}
+	public void setMEMBERPHONE(int mEMBERPHONE) {
+		MEMBERPHONE = mEMBERPHONE;
+	}
+	public String getMEMBERNAME() {
+		return MEMBERNAME;
+	}
+	public void setMEMBERNAME(String mEMBERNAME) {
+		MEMBERNAME = mEMBERNAME;
+	}
 	@Override
 	public String toString() {
 		return "Rental [BOOKCODE=" + BOOKCODE + ", RENTALSTARTDAY=" + RENTALSTARTDAY + ", RETURNEXPECTDAY="
-				+ RETURNEXPECTDAY + ", MEMBERID=" + MEMBERID + ", RETURNSTATUS=" + RETURNSTATUS + ", RENTALCODE="
-				+ RENTALCODE + ", BOOKNAME=" + BOOKNAME + "]";
+				+ RETURNEXPECTDAY + ", MEMBERID=" + MEMBERID + ", MEMBERNAME=" + MEMBERNAME + ", MEMBERPHONE="
+				+ MEMBERPHONE + ", RETURNSTATUS=" + RETURNSTATUS + ", RENTALCODE=" + RENTALCODE + ", BOOKNAME="
+				+ BOOKNAME + "]";
 	}
-
+	
 }

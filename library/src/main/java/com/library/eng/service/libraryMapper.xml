@@ -132,11 +132,15 @@
 			resultType="com.library.eng.service.Rental">
 			SELECT		eng_books.BOOKNAME,
 						eng_rental.MEMBERID,
+						eng_member.MEMBERNAME,
+						eng_member.MEMBERPHONE,
 						eng_rental.RENTALSTARTDAY,
 						eng_rental.RETURNEXPECTDAY
 			FROM		eng_rental
 						JOIN	eng_books
 						ON		eng_rental.BOOKCODE = eng_books.BOOKCODE
+						JOIN	eng_member
+						ON		eng_member.MEMBERID = eng_rental.MEMBERID
 			<![CDATA[WHERE		RETURNSTATUS = 'n' AND eng_rental.RETURNEXPECTDAY < CURDATE()]]>
 			ORDER BY	RETURNEXPECTDAY ASC LIMIT 5
 	</select>

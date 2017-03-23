@@ -88,6 +88,8 @@
 								<th>#</th>
 								<th>도서명</th>
 								<th>대여자 아이디</th>
+								<th>대여자 이름</th>
+								<th>대여자 전화번호</th>
 								<th>도서반납예정일</th>
 							</tr>
 						</thead>
@@ -97,6 +99,8 @@
 									<td>${status.count}</td>
 									<td>${RentalList.BOOKNAME}</td>
 									<td>${RentalList.MEMBERID}</td>
+									<td>${RentalList.MEMBERNAME}</td>
+									<td>${RentalList.MEMBERPHONE}</td>
 									<td>${RentalList.RETURNEXPECTDAY}</td>
 								</tr>
 							</tbody>
