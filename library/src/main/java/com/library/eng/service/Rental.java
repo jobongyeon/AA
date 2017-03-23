@@ -7,6 +7,7 @@ public class Rental {
 	private String MEMBERID;
 	private String RETURNSTATUS;
 	private int RENTALCODE;
+	private String BOOKNAME;
 	public int getRENTALCODE() {
 		return RENTALCODE;
 	}
@@ -43,12 +44,17 @@ public class Rental {
 	public void setRETURNSTATUS(String RETURNSTATUS) {
 		this.RETURNSTATUS = RETURNSTATUS;
 	}
+	public String getBOOKNAME() {
+		return BOOKNAME;
+	}
+	public void setBOOKNAME(String bOOKNAME) {
+		BOOKNAME = bOOKNAME;
+	}
 	@Override
 	public String toString() {
 		return "Rental [BOOKCODE=" + BOOKCODE + ", RENTALSTARTDAY=" + RENTALSTARTDAY + ", RETURNEXPECTDAY="
 				+ RETURNEXPECTDAY + ", MEMBERID=" + MEMBERID + ", RETURNSTATUS=" + RETURNSTATUS + ", RENTALCODE="
-				+ RENTALCODE + "]";
+				+ RENTALCODE + ", BOOKNAME=" + BOOKNAME + "]";
 	}
-	
-	
+
 }

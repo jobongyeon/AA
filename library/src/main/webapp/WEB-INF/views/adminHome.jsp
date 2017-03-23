@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,17 +67,6 @@
 		<!-- 도서대출현황 -->
 		<div class="col-md-2">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="text-align: left;">도서대출현황</div>
-				<div class="panel-body" style="color: gray; text-align: left;">
-					▷1<br/>
-					▷2<br/>
-					▷3<br/>
-				</div>
-			</div>
-		</div>
-		<!-- 도서연체현황 -->
-		<div class="col-md-6">
-			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: left;">도서연체현황</div>
 				<div class="panel-body" style="color: gray; text-align: left;">
 					▷1<br/>
@@ -87,7 +77,34 @@
 				</div>
 			</div>
 		</div>
-		
+		<!-- 도서연체현황 -->
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading" style="text-align: left;">도서미반납자현황</div>
+				<div class="panel-body" style="color: gray; text-align: left;">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>도서명</th>
+								<th>대여자 아이디</th>
+								<th>도서반납예정일</th>
+							</tr>
+						</thead>
+						<c:forEach var="RentalList" varStatus="status" items="${RentalList}">
+							<tbody>
+								<tr>
+									<td>${status.count}</td>
+									<td>${RentalList.BOOKNAME}</td>
+									<td>${RentalList.MEMBERID}</td>
+									<td>${RentalList.RETURNEXPECTDAY}</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<div class="row">

@@ -69,10 +69,14 @@ public class libraryController {
 	}
 	//관리자 메인페이지 : 관리자 메인페이지로 이동
 	@RequestMapping(value="/lib/adminHome", method=RequestMethod.GET)
-	public String adminHome() {
+	public String adminHome(Model model) {
 		logger.debug("관리자 메인페이지 GET실행");
+		//관리자 메인페이지 : 도서대출현황
+		List<Rental> RentalList = service.selectRentalList();
+		model.addAttribute("RentalList", RentalList);
 		return "/adminHome";
 	}
+
 	//관리자 로그아웃 : 상단메뉴 로그아웃 버튼 클릭시 세션종료 및 로그인 화면으로 이동
 	@RequestMapping(value="/lib/adminLogout", method=RequestMethod.GET)
 	public String adminLogout(HttpSession session){

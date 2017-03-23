@@ -68,5 +68,10 @@ public class LibraryService {
 	public int addPayment(Payment payment) {
 		return libDao.insertPayment(payment);
 	}
+	//관리자 메인페이지 : 도서대출현황
+	public List<Rental> selectRentalList() {
+		logger.debug(" service selectRentalList ");
+		return libDao.selectRentalList();		
+	}
 	
 }

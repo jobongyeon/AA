@@ -4,7 +4,7 @@
 <mapper namespace="com.library.eng">
 	<insert id="memberAdd"
 			parameterType="com.library.eng.service.Member">
-			INSERT INTO member
+			INSERT INTO eng_member
 						(MEMBERID,
 						MEMBERPW,
 						MEMBERNAME,
@@ -27,7 +27,7 @@
 			resultType="com.library.eng.service.Library">
 			SELECT	libname,
 					libcode
-			FROM	lib
+			FROM	eng_lib
 	</select>
 	<select id="selectAdminLogin"
 			resultType="com.library.eng.service.Admin"
@@ -36,13 +36,13 @@
 				ADMINID, 
 				ADMINPW 
 			FROM 
-				admin 
+				eng_admin 
 			WHERE 
 				ADMINID=#{ADMINID}
 	</select>
 	<insert id="libraryAdd"
 			parameterType="com.library.eng.service.Library">
-			INSERT INTO lib(
+			INSERT INTO eng_lib(
 				LIBNAME, 
 				LIBLOCATION) 
 			VALUES(
@@ -52,7 +52,7 @@
 	</insert>
 	<insert id="bookAdd"
 			parameterType="com.library.eng.service.Books">
-			INSERT INTO	books (
+			INSERT INTO	eng_books (
 				LIBCODE, 
 				BOOKNAME, 
 				WRITER, 
@@ -72,7 +72,7 @@
 	</insert>
 	<insert id="bookDelete"
 			parameterType="com.library.eng.service.Discardbooks">
-			INSERT INTO discardbooks(
+			INSERT INTO eng_discardbooks(
 				BOOKCODE, 
 				DISCARDREASON)
 			VALUES(
@@ -83,7 +83,7 @@
 	<update id="updateBookStatus"
 			parameterType="com.library.eng.service.Books">
 			UPDATE 
-				books 
+				eng_books 
 			SET 
 				CURRENTSTATUS = 'n'
 			WHERE  
@@ -93,7 +93,7 @@
 			parameterType="com.library.eng.service.Rental"
 			useGeneratedKeys="true"
 			keyProperty="RENTALCODE">
-			INSERT INTO rental(
+			INSERT INTO eng_rental(
 				BOOKCODE,
 				RENTALSTARTDAY,
 				RETURNEXPECTDAY,
@@ -116,7 +116,7 @@
 	</select> -->
 	<insert id="insertPayment"
 			parameterType="com.library.eng.service.Payment">
-			INSERT INTO	payment(
+			INSERT INTO	eng_payment(
 				RENTALCODE,
 				MEMBERID,
 				PAYMENTDAY,
@@ -127,4 +127,17 @@
 				#{PAYMENTDAY},
 				#{PAYMENTPRICE})
 	</insert>
+	<!-- 관리자 메인페이지 : 도서대출현황 -->
+	<select id="selectRentalList"
+			resultType="com.library.eng.service.Rental">
+			SELECT		eng_books.BOOKNAME,
+						eng_rental.MEMBERID,
+						eng_rental.RENTALSTARTDAY,
+						eng_rental.RETURNEXPECTDAY
+			FROM		eng_rental
+						JOIN	eng_books
+						ON		eng_rental.BOOKCODE = eng_books.BOOKCODE
+			<![CDATA[WHERE		RETURNSTATUS = 'n' AND eng_rental.RETURNEXPECTDAY < CURDATE()]]>
+			ORDER BY	RETURNEXPECTDAY ASC LIMIT 5
+	</select>
 </mapper>

@@ -65,5 +65,9 @@ public class LibraryDao {
 		logger.debug(" Dao insertPayment");
 		return sqlSession.insert(NS+"insertPayment", payment);
 	}
-	
+	//관리자 메인페이지 : 도서대출현황
+	public List<Rental> selectRentalList() {
+		logger.debug(" Dao selectRentalList");
+		return sqlSession.selectList(NS+"selectRentalList");
+	}
 }
