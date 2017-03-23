@@ -60,25 +60,25 @@
 		</div>
 	</div>
 <!-- 미구현 구간 -->
-	<!-- 도서대출현황 -->
-	<!-- <div class="row">
-		<div class="col-md-2" style="margin-left: 200px; margin-top: -45px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
+	
+	<div class="row">
+		<div class="col-md-2"></div>
+		<!-- 도서대출현황 -->
+		<div class="col-md-2">
+			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: left;">도서대출현황</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 500px;">
+				<div class="panel-body" style="color: gray; text-align: left;">
 					▷1<br/>
 					▷2<br/>
 					▷3<br/>
 				</div>
 			</div>
 		</div>
-	</div> -->
-	<!-- 도서연체현황 -->
-	<!-- <div class="row">
-		<div class="col-md-8" style="margin-left: 455px; margin-top: -728px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
+		<!-- 도서연체현황 -->
+		<div class="col-md-6">
+			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: left;">도서연체현황</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 150px;">
+				<div class="panel-body" style="color: gray; text-align: left;">
 					▷1<br/>
 					▷2<br/>
 					▷3<br/>
@@ -87,20 +87,28 @@
 				</div>
 			</div>
 		</div>
-	</div> -->
-	<!-- 도서폐기예정현황 -->
-	<!-- <div class="row">
-		<div class="col-md-8" style="margin-left: 455px; margin-top: -330px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
+		
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-2"></div>
+		<!-- 도서폐기예정현황 -->
+		<div class="col-md-6">
+			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: left;">도서폐기예정</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 100px;">
+				<div class="panel-body" style="color: gray; text-align: left;">
 					▷1<br/>
 					▷2<br/>
 					▷3<br/>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
+	
+	<div class="row">
+		
+	</div>
 <!-- 미구현 구간 -->
 </body>
 </html>
