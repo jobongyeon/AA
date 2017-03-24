@@ -26,7 +26,7 @@
 	<!-- 사이드바 -->
 	<div class="jumbotron" style="background-color: white;"></div>
 	<!-- <div class="col-lg-1"></div> -->
-	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index: 3;" id="mySidenav">
+	<div class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index: 3;" id="mySidenav">
 		<br>
 		<div class="w3-container">
 			<a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding"	title="close menu">
@@ -45,11 +45,10 @@
 			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
 			도서폐기
 		</a>
-	</nav>
+	</div>
 	<!-- 본문 -->
 	<div class="col-lg-3"></div>
 	<div class="col-lg-8 row">
-		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: left;">도서등록</div>
 				<div class="panel-body" style="color: orange; text-align: left;">
@@ -58,48 +57,45 @@
 					</div>
 					<div>
 						<form action="/lib/adminBook" method="post">
-							<div>
-								<div class="col-lg-4 form-group" style="color: gray;">
-									도서명 :
-									<input name="BOOKNAME" class="form-control" placeholder="도서명을 입력하세요" type="text" required>
-								</div>
-								<div class="col-lg-4 form-group" style="color: gray;">
-									저자명 :
-									<input name="WRITER" class="form-control" placeholder="저자명을 입력하세요" type="text" required>
-								</div>
-								<div class="col-lg-4 form-group" style="color: gray;">
-									출판사 :
-									<input name="PUBLISHER" class="form-control" placeholder="출판사를 입력하세요" type="text" required>
-								</div>
-								<div class="col-lg-4 form-group" style="color: gray;">
-									분류 :
-									<input name="CATEGORY" class="form-control" placeholder="분류를 입력하세요" type="text" required>
-								</div>
-								<div class="col-lg-4 form-group" style="color: gray;">
-									장르 :
-									<input name="GENRE" class="form-control" placeholder="장르를 입력하세요" type="text" required>
-								</div>
-								<div class="col-lg-4 form-group" style="color: gray;">
-									도서위치 :
-									<input name="BOOKLOCATION" class="form-control" placeholder="도서위치를 입력하세요" type="text" required>
-								</div>
-								<div class="container col-lg-4" style="color: gray;"> 
-									도서관선택 : 
-									<select id="LIBCODE" name="LIBCODE" class="form-control"> 
-										<c:forEach var="l" items="${list }">
-											<option value="${l.LIBCODE}">${l.LIBNAME}</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div class="col-lg-4 form-group">
-									<input type="submit" value="도서등록" class="btn pull-right" style="color: black;">
-								</div>
+							<div class="col-lg-5 form-group" style="color: gray;">
+								도서명 :
+								<input name="BOOKNAME" class="form-control" placeholder="도서명을 입력하세요" type="text" required>
+							</div>
+							<div class="col-lg-5 form-group" style="color: gray;">
+								저자명 :
+								<input name="WRITER" class="form-control" placeholder="저자명을 입력하세요" type="text" required>
+							</div>
+							<div class="col-lg-5 form-group" style="color: gray;">
+								출판사 :
+								<input name="PUBLISHER" class="form-control" placeholder="출판사를 입력하세요" type="text" required>
+							</div>
+							<div class="col-lg-5 form-group" style="color: gray;">
+								분류 :
+								<input name="CATEGORY" class="form-control" placeholder="분류를 입력하세요" type="text" required>
+							</div>
+							<div class="col-lg-5 form-group" style="color: gray;">
+								장르 :
+								<input name="GENRE" class="form-control" placeholder="장르를 입력하세요" type="text" required>
+							</div>
+							<div class="col-lg-5 form-group" style="color: gray;">
+								도서위치 :
+								<input name="BOOKLOCATION" class="form-control" placeholder="도서위치를 입력하세요" type="text" required>
+							</div>
+							<div class="container col-lg-5" style="color: gray;"> 
+								도서관선택 : 
+								<select id="LIBCODE" name="LIBCODE" class="form-control"> 
+									<c:forEach var="l" items="${list }">
+										<option value="${l.LIBCODE}">${l.LIBNAME}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="col-lg-5 form-group">
+								<input type="submit" value="도서등록" class="btn pull-right" style="color: black;">
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>
