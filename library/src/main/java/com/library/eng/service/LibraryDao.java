@@ -8,6 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.library.eng.libraryController;
+import com.library.eng.service.Vo.Admin;
+import com.library.eng.service.Vo.Books;
+import com.library.eng.service.Vo.Discardbooks;
+import com.library.eng.service.Vo.Library;
+import com.library.eng.service.Vo.Member;
+import com.library.eng.service.Vo.Payment;
+import com.library.eng.service.Vo.Rental;
 
 @Repository
 public class LibraryDao {

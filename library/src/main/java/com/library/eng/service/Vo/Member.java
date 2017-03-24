@@ -1,4 +1,4 @@
-package com.library.eng.service;
+package com.library.eng.service.Vo;
 
 public class Member {
 	
