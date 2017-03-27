@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.eng.service.Vo.Admin;
 import com.library.eng.service.Vo.Books;
@@ -150,6 +152,15 @@ public class libraryController {
 		service.deleteBook(discardbooks);
 		service.updateBookStatus(book);
 		return "redirect:adminHome";
+	}
+	
+	//관리자 도서 관리 도서 폐기 : 도서관리 - 도서폐기 도서폐기전 ajax로 도서 정보 가져오기
+	@RequestMapping(value="/lib/adminBookInfo", method=RequestMethod.POST)
+	public @ResponseBody Books adminBookInfo(@RequestParam int BOOKCODE) {
+		logger.debug("관리자 도서관리 도서폐기 전 도서정보 조회 POST실행");
+		Books adminBookInfo = service.adminBookInfo(BOOKCODE);
+		logger.debug("adminBookInfo : "+adminBookInfo.toString());	//test log
+		return adminBookInfo;
 	}
 	
 	//관리자 도서대여/반납 관리 : 상단 도서대여/반납관리 메뉴 클릭시 도서대여화면으로 이동

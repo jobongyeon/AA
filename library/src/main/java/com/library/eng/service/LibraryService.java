@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.library.eng.libraryController;
 import com.library.eng.service.Vo.Admin;
 import com.library.eng.service.Vo.Books;
 import com.library.eng.service.Vo.Discardbooks;
@@ -19,7 +18,8 @@ import com.library.eng.service.Vo.Rental;
 public class LibraryService {
 	@Autowired
 	private LibraryDao libDao;
-	private static final Logger logger = LoggerFactory.getLogger(libraryController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LibraryService.class);
+	
 	//회원가입 폼에서 도서관 리스트 보여주는 메서드
 	public List<Library> getselectLibcodeForInsert() {
 		logger.debug(this.getClass()+"getselectLibcodeForInsert");
@@ -61,6 +61,13 @@ public class LibraryService {
 	public int deleteBook(Discardbooks discardbooks) {
 		return libDao.deleteBook(discardbooks);
 	}
+	
+	//관리자 도서 관리 도서 폐기 : 도서관리 - 도서폐기 도서폐기전 ajax로 도서 정보 가져오기
+	public Books adminBookInfo(int BOOKCODE) {
+		logger.debug("Service adminBookInfo");
+		return libDao.adminBookInfo(BOOKCODE);
+	}
+	
 	//도서의 대여상태수정
 	public int updateBookStatus(Books book) {
 		return libDao.updateBookStatus(book);
@@ -81,4 +88,5 @@ public class LibraryService {
 		return libDao.selectRentalList();		
 	}
 	
+
 }

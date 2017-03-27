@@ -2,6 +2,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.library.eng">
+	
+	<!-- 회원등록 -->
 	<insert id="memberAdd"
 			parameterType="com.library.eng.service.Vo.Member">
 			INSERT INTO eng_member
@@ -23,12 +25,34 @@
 						now(),
 						#{LIBCODE})
 	</insert>
+	
+	<!-- 회원등록 전 회원이 소속될 도서관 조회 -->
 	<select id="selectMemberAdd"
 			resultType="com.library.eng.service.Vo.Library">
 			SELECT	libname,
 					libcode
 			FROM	eng_lib
 	</select>
+	
+	<!-- 관리자 메인페이지 : 도서대출현황 -->
+	<select id="selectRentalList"
+			resultType="com.library.eng.service.Vo.Rental">
+			SELECT		eng_books.BOOKNAME,
+						eng_rental.MEMBERID,
+						eng_member.MEMBERNAME,
+						eng_member.MEMBERPHONE,
+						eng_rental.RENTALSTARTDAY,
+						eng_rental.RETURNEXPECTDAY
+			FROM		eng_rental
+						JOIN	eng_books
+						ON		eng_rental.BOOKCODE = eng_books.BOOKCODE
+						JOIN	eng_member
+						ON		eng_member.MEMBERID = eng_rental.MEMBERID
+			<![CDATA[WHERE		RETURNSTATUS = 'n' AND eng_rental.RETURNEXPECTDAY < CURDATE()]]>
+			ORDER BY	RETURNEXPECTDAY ASC LIMIT 5
+	</select>
+	
+	<!-- 로그인하기위한 아이디 패스워드 조회 -->
 	<select id="selectAdminLogin"
 			resultType="com.library.eng.service.Vo.Admin"
 			parameterType="String">
@@ -40,6 +64,8 @@
 			WHERE 
 				ADMINID=#{ADMINID}
 	</select>
+	
+	<!-- 도서관 등록 -->
 	<insert id="libraryAdd"
 			parameterType="com.library.eng.service.Vo.Library">
 			INSERT INTO eng_lib(
@@ -50,6 +76,8 @@
 				#{LIBLOCATION}
 				) 
 	</insert>
+	
+	<!-- 도서 등록 -->
 	<insert id="bookAdd"
 			parameterType="com.library.eng.service.Vo.Books">
 			INSERT INTO	eng_books (
@@ -70,6 +98,8 @@
 				#{BOOKLOCATION}
 				)
 	</insert>
+	
+	<!-- 도서 폐기 -->
 	<insert id="bookDelete"
 			parameterType="com.library.eng.service.Vo.Discardbooks">
 			INSERT INTO eng_discardbooks(
@@ -80,6 +110,20 @@
 				#{DISCARDREASON}
 				)
 	</insert>
+	
+	<!-- 도서폐기전 ajax로 도서 정보 가져오기 -->
+	<select id="adminBookInfo"
+			resultType="com.library.eng.service.Vo.Books">
+			SELECT	eng_books.BOOKNAME,
+					eng_books.WRITER,
+					eng_books.PUBLISHER,
+					eng_books.CATEGORY,
+					eng_books.GENRE
+			FROM	eng_books
+			WHERE	eng_books.BOOKCODE = #{BOOKCODE}
+	</select>
+	
+	<!-- 도서 수정 -->
 	<update id="updateBookStatus"
 			parameterType="com.library.eng.service.Vo.Books">
 			UPDATE 
@@ -89,6 +133,8 @@
 			WHERE  
 				BOOKCODE = #{BOOKCODE}
 	</update>
+	
+	<!-- 대여등록 -->
 	<insert id="insertRental"
 			parameterType="com.library.eng.service.Vo.Rental"
 			useGeneratedKeys="true"
@@ -106,6 +152,8 @@
 				#{MEMBERID},
 				'n')
 	</insert>
+	
+	<!-- 단가조회 -->
 	<!-- <select id="selectCost"
 			resultType="com.library.eng.service.Vo.Cost">
 			SELECT
@@ -114,6 +162,8 @@
 			FROM
 				COST
 	</select> -->
+	
+	<!-- 결제등록 -->
 	<insert id="insertPayment"
 			parameterType="com.library.eng.service.Vo.Payment">
 			INSERT INTO	eng_payment(
@@ -127,21 +177,6 @@
 				#{PAYMENTDAY},
 				#{PAYMENTPRICE})
 	</insert>
-	<!-- 관리자 메인페이지 : 도서대출현황 -->
-	<select id="selectRentalList"
-			resultType="com.library.eng.service.Vo.Rental">
-			SELECT		eng_books.BOOKNAME,
-						eng_rental.MEMBERID,
-						eng_member.MEMBERNAME,
-						eng_member.MEMBERPHONE,
-						eng_rental.RENTALSTARTDAY,
-						eng_rental.RETURNEXPECTDAY
-			FROM		eng_rental
-						JOIN	eng_books
-						ON		eng_rental.BOOKCODE = eng_books.BOOKCODE
-						JOIN	eng_member
-						ON		eng_member.MEMBERID = eng_rental.MEMBERID
-			<![CDATA[WHERE		RETURNSTATUS = 'n' AND eng_rental.RETURNEXPECTDAY < CURDATE()]]>
-			ORDER BY	RETURNEXPECTDAY ASC LIMIT 5
-	</select>
+	
+
 </mapper>

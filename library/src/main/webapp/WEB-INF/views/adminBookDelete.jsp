@@ -19,74 +19,73 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/adminHome.css">
 
 </head>
-<!-- 상단가로바 -->
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/lib/adminHome">Home</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/lib/adminLibrary">도서관관리</a></li>
-					<li><a href="/lib/adminBook">도서관리</a></li>
-					<li><a href="/lib/adminRental">도서대여/반납</a></li>
-					<li><a href="#pricing">회원관리</a></li>
-					<li><a href="/lib/adminLogout">로그아웃</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- 사이드바 -->
-	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px; margin-top:50px; margin-left: 150px;" id="mySidenav">
-		<br>
-		<div class="w3-container">
-			<a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding"	title="close menu">
-				<i class="fa fa-remove"></i>
-			</a> 
-			<br><br>
-			<h4 class="w3-padding-0">
-				<b>도서관리</b>
-			</h4>
-		</div>
-		<a href="/lib/adminBook" onclick="w3_close()" class="w3-padding w3-text-teal">
-			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
-			도서등록
-		</a>
-		<a href="/lib/adminBookDelete" onclick="w3_close()" class="w3-padding w3-text-teal">
-			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
-			도서폐기
-		</a>
-	</nav>
+
+<!-- 상단가로바 -->
+<%@include file="/WEB-INF/views/adminModule/adminHeadBar.jsp" %>
+
+<!-- 사이드바 -->
+<%@include file="/WEB-INF/views/adminModule/adminBookSideBar.jsp" %>
+
+	<!-- 공백주기 -->
+	<div class="col-lg-3"></div>
+	
 	<!-- 본문 -->
-	<div class="row">
-		<div class="col-md-7" style="margin-left: 450px; margin-top: 100px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
-				<div class="panel-heading" style="text-align: left;">도서폐기</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 50px;">
-					<img src="/resources/img/bookmark.ico" style="margin-left: 50px;">
-					<div class="row">
-						<form action="/lib/adminBookDelete" method="post">
-							<div class="col-sm-6 form-group" style="margin-top: -210px; margin-left: 350px; color: gray;">
-								도서코드 : <br />
-								<input class="form-control" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required/>
+	<div class="col-lg-7 row" style="margin-top: 10%;">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="text-align: left;">도서폐기</div>
+			<div class="panel-body" style="text-align: left;">
+				<div class="col-lg-3">
+					<img src="/resources/img/bookmark.ico">
+				</div>
+				<div class="col-lg-2"></div>
+				<div>
+					<form action="/lib/adminBookDelete" method="post">
+					
+						<fieldset class="col-lg-5">
+							<legend>Delete</legend>
+							
+							<!-- 도서코드 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								도서코드 :
+								<input class="form-control" id="BOOKCODE" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required/>
 							</div>
-							<br /><br />
-							<div class="col-sm-6 form-group" style="margin-top: -190px; margin-left: 350px; color: gray;">
-								폐기사유 : <br />
+							
+							<!-- 폐기사유 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								폐기사유 :
 								<input class="form-control" name="DISCARDREASON" placeholder="사유를 입력하세요" type="text" required/>
 							</div>
-							<input type="submit" value="도서폐기" class="btn pull-right" style="margin-right: 100px; margin-top: -110px; color: black;" />
-						</form>
-					</div>
+							
+							<!-- 폐기버튼 -->
+							<div class="col-lg-12 form-group">
+								<input type="submit" value="도서폐기" class="btn pull-right" style="color: black;" />
+							</div>
+							
+						</fieldset>
+						
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+<script>
+	$(document).ready(function() {
+		$("#BOOKCODE").change(function() {
+			console.log("제이쿼리 테스트")
+			$.ajax({
+				url : "/lib/adminBookInfo",
+				data : {"BOOKCODE" : $("#BOOKCODE").val()},
+				dataType 	: "json",
+				type 		: "post",
+				success 	: function(data) {
+					console.log("테스트")
+					alert(data);
+				}
+			})
+		});
+	});
+</script>
 </html>

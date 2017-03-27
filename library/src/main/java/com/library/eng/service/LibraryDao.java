@@ -54,6 +54,11 @@ public class LibraryDao {
 		logger.debug(" Dao deleteBook");
 		return sqlSession.insert(NS+"bookDelete", discardbooks);
 	}
+	//관리자 도서 관리 도서 폐기 : 도서관리 - 도서폐기 도서폐기전 ajax로 도서 정보 가져오기
+	public Books adminBookInfo(int BOOKCODE) {
+		logger.debug(" Dao adminBookInfo");
+		return sqlSession.selectOne(NS+"adminBookInfo", BOOKCODE);
+	}
 	//도서대여상태수정
 	public int updateBookStatus(Books book) {
 		logger.debug(" Dao updateBookStatus");
@@ -77,4 +82,5 @@ public class LibraryDao {
 		logger.debug(" Dao selectRentalList");
 		return sqlSession.selectList(NS+"selectRentalList");
 	}
+
 }
