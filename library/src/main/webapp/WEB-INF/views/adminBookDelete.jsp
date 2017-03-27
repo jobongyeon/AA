@@ -52,6 +52,9 @@
 								<input class="form-control" id="BOOKCODE" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required/>
 							</div>
 							
+							<!-- 조회정보 -->
+							<div id="ReturnBookInfo"></div>
+							
 							<!-- 폐기사유 -->
 							<div class="col-lg-12 form-group" style="color: gray;">
 								폐기사유 :
@@ -72,20 +75,51 @@
 	</div>
 </body>
 <script>
-	$(document).ready(function() {
-		$("#BOOKCODE").change(function() {
-			console.log("제이쿼리 테스트")
-			$.ajax({
-				url : "/lib/adminBookInfo",
-				data : {"BOOKCODE" : $("#BOOKCODE").val()},
-				dataType 	: "json",
-				type 		: "post",
-				success 	: function(data) {
-					console.log("테스트")
-					alert(data);
-				}
-			})
-		});
+$(document).ready(function() {
+	$("#BOOKCODE").change(function() {
+		console.log("제이쿼리 테스트")
+		$.ajax({
+			url : "/lib/adminBookInfo",					//경로
+			data : {"BOOKCODE" : $("#BOOKCODE").val()},	//통신할 데이터
+			dataType 	: "json",						//통신되서 올 데이터타입
+			type 		: "post",						//전송방법
+			success 	: function(data) {
+				console.log("통신성공")					//log
+				$(ReturnBookInfo).append(
+					'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'도서이름 :'
+					+'<input class="form-control"'
+					+'type="text" value="'+data.bookname+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'저자 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.writer+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'출판사 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.publisher+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'카테고리 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.category+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'장르 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.genre+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+				);
+			}
+		})
 	});
+});
 </script>
 </html>
