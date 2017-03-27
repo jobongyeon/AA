@@ -85,6 +85,7 @@ $(document).ready(function() {
 			type 		: "post",						//전송방법
 			success 	: function(data) {
 				console.log("통신성공")					//log
+				$(ReturnBookInfo).empty();				//데이터 조회시마다 태그내용 초기화
 				$(ReturnBookInfo).append(
 					'<div class="col-lg-12 form-group" style="color: gray;">'
 					+'도서이름 :'
