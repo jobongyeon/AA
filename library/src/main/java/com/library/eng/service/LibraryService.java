@@ -94,6 +94,29 @@ public class LibraryService {
 		logger.debug(" service selectRentalList ");
 		return libDao.selectRentalList();		
 	}
+	
+	//관리자 메인페이지 : 대여현황
+	public Rental ReturnBookCount() {
+		logger.debug(" service ReturnBookCount ");
+		return libDao.ReturnBookCount();
+	}
+	
+	//관리자 메인페이지 : 도서폐기예정현황
+	public Discardbooks disCardBooksCount() {
+		logger.debug(" service disCardBooksCount ");
+		return libDao.disCardBooksCount();
+	}
+	
+	//관리자 메인페이지 : 회원전체카운트
+	public Member memberCount() {
+		logger.debug(" service memberCount ");
+		return libDao.memberCount();
+	}
+	//관리자 메인페이지 : 전체도서관 카운트
+	public Library libraryCount() {
+		logger.debug(" service libraryCount ");
+		return libDao.libraryCount();
+	}
 
 
 }

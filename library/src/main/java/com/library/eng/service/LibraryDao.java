@@ -84,11 +84,34 @@ public class LibraryDao {
 		logger.debug(" Dao insertPayment");
 		return sqlSession.insert(NS+"insertPayment", payment);
 	}
+	
 	//관리자 메인페이지 : 도서대출현황
 	public List<Rental> selectRentalList() {
 		logger.debug(" Dao selectRentalList");
 		return sqlSession.selectList(NS+"selectRentalList");
 	}
-
-
+	
+	//관리자 메인페이지 : 대여현황
+	public Rental ReturnBookCount() {
+		logger.debug(" Dao ReturnBookCount");
+		return sqlSession.selectOne(NS+"ReturnBookCount");
+	}
+	
+	//관리자 메인페이지 : 도서폐기예정현황
+	public Discardbooks disCardBooksCount() {
+		logger.debug(" Dao disCardBooksCount");
+		return sqlSession.selectOne(NS+"disCardBooksCount");
+	}
+	
+	//관리자 메인페이지 : 회원전체카운트
+	public Member memberCount() {
+		logger.debug(" Dao memberCount");
+		return sqlSession.selectOne(NS+"memberCount");
+	}
+	
+	//관리자 메인페이지 : 전체도서관 카운트
+	public Library libraryCount() {
+		logger.debug(" Dao libraryCount");
+		return sqlSession.selectOne(NS+"libraryCount");
+	}
 }

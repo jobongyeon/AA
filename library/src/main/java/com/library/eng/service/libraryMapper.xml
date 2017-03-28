@@ -52,17 +52,43 @@
 			ORDER BY	RETURNEXPECTDAY ASC LIMIT 5
 	</select>
 	
+	<!-- 관리자 메인페이지 : 도서미반납카운트 -->
+	<select id="ReturnBookCount"
+			resultType="com.library.eng.service.Vo.Rental">
+			SELECT	COUNT(eng_rental.RETURNSTATUS) AS RETURNSTATUS
+			FROM	eng_rental
+			WHERE	eng_rental.RETURNSTATUS = 'n'
+	</select>
+	
+	<!-- 관리자 메인페이지 : 도서폐기예정현황 -->
+	<select id="disCardBooksCount"
+			resultType="com.library.eng.service.Vo.Discardbooks">
+			SELECT	COUNT(eng_discardbooks.BOOKCODE) AS BOOKCODE
+			FROM	eng_discardbooks
+	</select>
+	
+	<!-- 관리자 메인페이지 : 회원전체카운트 -->
+	<select id="memberCount"
+			resultType="com.library.eng.service.Vo.Member">
+			SELECT	COUNT(eng_member.MEMBERID) AS MEMBERID
+			FROM	eng_member
+	</select>
+	
+	<!-- 관리자 메인페이지 : 전체도서관 카운트 -->
+	<select id="libraryCount"
+			resultType="com.library.eng.service.Vo.Library">
+			SELECT	COUNT(eng_lib.LIBCODE) AS LIBCODE
+			FROM	eng_lib
+	</select>
+	
 	<!-- 로그인하기위한 아이디 패스워드 조회 -->
 	<select id="selectAdminLogin"
 			resultType="com.library.eng.service.Vo.Admin"
 			parameterType="String">
-			SELECT 
-				ADMINID, 
-				ADMINPW 
-			FROM 
-				eng_admin 
-			WHERE 
-				ADMINID=#{ADMINID}
+			SELECT	ADMINID,
+					ADMINPW 
+			FROM	eng_admin 
+			WHERE	ADMINID=#{ADMINID}
 	</select>
 	
 	<!-- 도서관 등록 -->
@@ -126,12 +152,9 @@
 	<!-- 도서 수정 -->
 	<update id="updateBookStatus"
 			parameterType="com.library.eng.service.Vo.Books">
-			UPDATE 
-				eng_books 
-			SET 
-				CURRENTSTATUS = 'n'
-			WHERE  
-				BOOKCODE = #{BOOKCODE}
+			UPDATE	eng_books 
+			SET		CURRENTSTATUS = 'n'
+			WHERE	BOOKCODE = #{BOOKCODE}
 	</update>
 	
 	<!-- 도서대여 전 회원아이디 입력시 ajax로 회원정보 가져오기 -->

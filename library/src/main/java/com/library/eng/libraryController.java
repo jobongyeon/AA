@@ -45,7 +45,8 @@ public class libraryController {
 	@RequestMapping(value="/lib/memberAdd", method=RequestMethod.GET)
 	public String selectLibcodeForMemberAdd(Model model) {
 		logger.debug("회원가입 페이지 GET실행");
-		List<Library> LibcodeList = service.getselectLibcodeForInsert();	//회원가입전 도서관 리스트 조회
+		//회원가입전 도서관 리스트 조회
+		List<Library> LibcodeList = service.getselectLibcodeForInsert();	
 		model.addAttribute("list", LibcodeList);
 		return "/memberAdd";
 	}
@@ -98,11 +99,28 @@ public class libraryController {
 	//관리자 메인페이지 : 관리자 메인페이지로 이동
 	@RequestMapping(value="/lib/adminHome", method=RequestMethod.GET)
 	public String adminHome(Model model) {
+		//진입시 로그
 		logger.debug("관리자 메인페이지 GET실행");
 		//관리자 메인페이지 : 도서대출현황
 		List<Rental> RentalList = service.selectRentalList();
 		logger.debug("화면으로 보낼 미납자 리스트내용 : "+RentalList.toString());
 		model.addAttribute("RentalList", RentalList);
+		//도서대여 카운트
+		Rental ReturnBookCount = service.ReturnBookCount();
+		model.addAttribute("ReturnBookCount", ReturnBookCount);
+		logger.debug("ReturnBookCount : "+ReturnBookCount);
+		//도서폐기예정 카운트
+		Discardbooks disCardBooksCount = service.disCardBooksCount();
+		model.addAttribute("disCardBooksCount", disCardBooksCount);
+		logger.debug("disCardBooksCount : "+disCardBooksCount);
+		//회원전체 카운트
+		Member memberCount = service.memberCount();
+		model.addAttribute("memberCount", memberCount);
+		logger.debug("memberCount : "+memberCount);
+		//전체도서관 카운트
+		Library libraryCount = service.libraryCount();
+		model.addAttribute("libraryCount", libraryCount);
+		logger.debug("libraryCount : "+libraryCount);
 		return "/adminHome";
 	}
 
@@ -166,7 +184,7 @@ public class libraryController {
 	
 	//관리자 도서대여/반납 관리 : 도서관리 - 도서대여/반납관리 메뉴 클릭시 도서대여화면으로 이동
 	@RequestMapping(value="/lib/adminRental", method=RequestMethod.GET)
-	public String adminRental() {
+	public String adminRental(Model model) {
 		logger.debug("관리자 도서대여/반납 도서대여 GET실행");
 		return "/adminRental";
 	}

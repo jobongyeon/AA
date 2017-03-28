@@ -44,8 +44,8 @@
 	</nav>
 	
 	<!-- 공지사항 -->
-	<div class="jumbotron">
-		<div class="row">
+	<!-- <div class="jumbotron"> -->
+		<div class="row" style="margin-top: 5%;">
 			<div class="col-md-2"></div>
 			<div class="col-md-2">
 				<img src="/resources/img/bookmark.ico">
@@ -54,26 +54,37 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Jeonju English Library</div>
 					<div class="panel-body" style="color: gray;">
-						어서오십시오<br/><br/><br/><br/><br/>
+						▷도서 미반납자 : 0명<br/>
+						▷도서 대여현황 : ${ReturnBookCount.RETURNSTATUS}권<br/>
+						▷도서 폐기예정 : ${disCardBooksCount.BOOKCODE}권<br/>
+						▷회원 전체현황 : ${memberCount.MEMBERID}명<br/>
+						▷전체 도서관수 : ${libraryCount.LIBCODE}관<br/>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-<!-- 미구현 구간 -->
+	<!-- </div> -->
 	
 	<div class="row">
+		
+		<!-- 좌측면 여백 -->
 		<div class="col-md-2"></div>
+		
 		<!-- 도서대출현황 -->
 		<div class="col-md-2">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="text-align: left;">도서연체현황</div>
+				<div class="panel-heading" style="text-align: left;">도서관 별 연체자 현황</div>
 				<div class="panel-body" style="color: gray; text-align: left;">
 					▷1<br/>
 					▷2<br/>
 					▷3<br/>
 					▷4<br/>
 					▷5<br/>
+					▷6<br/>
+					▷7<br/>
+					▷8<br/>
+					▷9<br/>
+					▷10<br/>
 				</div>
 			</div>
 		</div>
@@ -111,10 +122,10 @@
 		</div>
 	</div>
 	
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-2"></div>
-		<!-- 도서폐기예정현황 -->
+		도서폐기예정현황
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: left;">도서폐기예정</div>
@@ -125,7 +136,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	
 	<div class="row">
 		
