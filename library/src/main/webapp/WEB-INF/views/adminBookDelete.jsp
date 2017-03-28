@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,7 +43,7 @@
 					<form action="/lib/adminBookDelete" method="post">
 					
 						<fieldset class="col-lg-5">
-							<legend>Delete</legend>
+							<legend style="color: gray;">Delete</legend>
 							
 							<!-- 도서코드 -->
 							<div class="col-lg-12 form-group" style="color: gray;">

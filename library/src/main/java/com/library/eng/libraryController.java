@@ -31,7 +31,7 @@ public class libraryController {
 	private static final Logger logger = LoggerFactory.getLogger(libraryController.class);
 	
 	/*********************************************************************
-	 회원페이지
+	 회원
 	**********************************************************************/
 	
 	//회원 메인페이지 : 회원가입 전 회비를 납부하는 회원과 미납부 회원 차이점 설명 및 납부회원조건 설명
@@ -59,7 +59,7 @@ public class libraryController {
 	}
 	
 	/*********************************************************************
-	 관리자메인페이지
+	 관리자로그인
 	**********************************************************************/
 	
 	//관리자 로그인페이지 : 관리자 로그인화면 
@@ -92,7 +92,7 @@ public class libraryController {
 	}
 	
 	/*********************************************************************
-	 관리자메인페이지
+	 관리자
 	**********************************************************************/
 	
 	//관리자 메인페이지 : 관리자 메인페이지로 이동
@@ -164,14 +164,23 @@ public class libraryController {
 		return adminBookInfo;
 	}
 	
-	//관리자 도서대여/반납 관리 : 상단 도서대여/반납관리 메뉴 클릭시 도서대여화면으로 이동
+	//관리자 도서대여/반납 관리 : 도서관리 - 도서대여/반납관리 메뉴 클릭시 도서대여화면으로 이동
 	@RequestMapping(value="/lib/adminRental", method=RequestMethod.GET)
 	public String adminRental() {
 		logger.debug("관리자 도서대여/반납 도서대여 GET실행");
 		return "/adminRental";
 	}
 	
-	//관리자 도서대여/반납 관리 : 상단 도서대여/반납관리 - 도서대여등록
+	//관리자 도서대여/반납 관리 : 도서관리 - 도서대여/반납관리 - 도서대여 전 회원아이디 입력시 ajax로 회원정보 가져오기
+	@RequestMapping(value="/lib/memberRentalInfo", method=RequestMethod.POST)
+	public @ResponseBody Member memberRentalInfo(@RequestParam String MEMBERID) {
+		logger.debug("관리자 도서관리 도서폐기 전 도서정보 조회 POST실행");
+		Member memberRentalInfo = service.memberRentalInfo(MEMBERID);
+		logger.debug("memberRentalInfo : "+memberRentalInfo);
+		return memberRentalInfo;
+	}
+	
+	//관리자 도서대여/반납 관리 : 도서관리 - 도서대여/반납관리 - 도서대여등록
 	@RequestMapping(value="/lib/adminRental", method=RequestMethod.POST)
 	public String adminRental(Rental rental, Books book, Cost cost, Payment payment) {
 		logger.debug("관리자 도서대여/반납 도서대여 POST실행");

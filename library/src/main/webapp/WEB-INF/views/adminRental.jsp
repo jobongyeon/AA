@@ -22,10 +22,9 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 
 <script type="text/javascript">
-$(function() {
-    $( "#testDatepicker" ).datepicker({
-    });
-});
+	$(function() {
+		$("#testDatepicker").datepicker({});
+	});
 </script>
 <!-- 대여날짜 프론트에서 보여주는 역할만 -->
 <script type="text/javascript">
@@ -81,92 +80,174 @@ addLoadEvent(function() {
 	returnExpectDate();
 });
 </script>
+<script>
+$(document).ready(function() {
+	$("#BOOKCODE").change(function() {					//도서 코드 값 변동시 이벤트 발생
+		console.log("제이쿼리 테스트")
+		$.ajax({
+			url : "/lib/adminBookInfo",					//경로
+			data : {"BOOKCODE" : $("#BOOKCODE").val()},	//통신할 데이터
+			dataType 	: "json",						//통신되서 올 데이터타입
+			type 		: "post",						//전송방법
+			success 	: function(data) {
+				console.log("도서 정보 통신성공")					//log
+				$(ReturnBookInfo).empty();				//데이터 조회시마다 태그내용 초기화
+				$(ReturnBookInfo).append(
+					'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'도서이름 :'
+					+'<input class="form-control"'
+					+'type="text" value="'+data.bookname+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'저자 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.writer+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'장르 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.genre+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<hr class="w3-border-grey" style="width: 100%">'
+				);
+			}
+		})
+	});
+	
+});
+</script>
+<script>
+$(document).ready(function() {
+	$("#MEMBERID").change(function() {					//도서 코드 값 변동시 이벤트 발생
+		console.log("제이쿼리 테스트")
+		$.ajax({
+			url : "/lib/memberRentalInfo",				//경로
+			data : {"MEMBERID" : $("#MEMBERID").val()},	//통신할 데이터
+			dataType 	: "json",						//통신되서 올 데이터타입
+			type 		: "post",						//전송방법
+			success 	: function(data) {
+				console.log("회원 정보 통신성공")				//log
+				$(ReturnMemberInfo).empty();			//데이터 조회시마다 태그내용 초기화
+				$(ReturnMemberInfo).append(
+					'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'회원이름 :'
+					+'<input class="form-control"'
+					+'type="text" value="'+data.membername+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'회원번호 : '
+					+'<input class="form-control"'
+					+'type="text" value="'+data.memberphone+'"'
+					+'readonly="readonly"/>'
+					+'</div>'
+					+'<div class="col-lg-12 form-group" style="color: gray;">'
+					+'회원주소 : '
+					+'<textarea class="form-control"'
+					+'readonly="readonly">'+data.memberaddr
+					+'</textarea>'
+				);
+			}
+		})
+	});
+	
+});
+</script>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/adminHome.css">
 </head>
-<!-- 상단가로바 -->
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/lib/adminHome">Home</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/lib/adminLibrary">도서관관리</a></li>
-					<li><a href="/lib/adminBook">도서관리</a></li>
-					<li><a href="/lib/adminRental">도서대여/반납</a></li>
-					<li><a href="#pricing">회원관리</a></li>
-					<li><a href="/lib/adminLogout">로그아웃</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- 사이드바 -->
-	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px; margin-top:50px; margin-left: 150px;" id="mySidenav">
-		<br>
-		<div class="w3-container">
-			<a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding"	title="close menu">
-				<i class="fa fa-remove"></i>
-			</a> 
-			<br><br>
-			<h4 class="w3-padding-0">
-				<b>도서 대여/반납</b>
-			</h4>
-		</div>
-		<a href="/lib/adminRental" onclick="w3_close()" class="w3-padding w3-text-teal">
-			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
-			도서대여
-		</a>
-		<a href="#portfolio" onclick="w3_close()" class="w3-padding w3-text-teal">
-			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
-			도서반납
-		</a>
-	</nav>
+
+<!-- 상단가로바 -->
+<%@include file="/WEB-INF/views/adminModule/adminHeadBar.jsp" %>
+
+<!-- 사이드바 -->
+<%@include file="/WEB-INF/views/adminModule/adminRentalAndReturn.jsp" %>
+
+	<!-- 공백주기 -->
+	<div class="col-lg-3"></div>
+	
 	<!-- 본문 -->
-	<div class="row">
-		<div class="col-md-7" style="margin-left: 450px; margin-top: 100px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
-				<div class="panel-heading" style="text-align: left;">도서대여</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 50px;">
-					<img src="/resources/img/bookmark.ico" style="margin-left: 50px;">
-					<div class="row">
-						<form action="/lib/adminRental" method="post">
-							<div class="col-sm-6 form-group" style="margin-top: -210px; margin-left: 350px; color: gray;">
-								*도서코드 : <br />
-								<input class="form-control" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required>
+	<div class="col-lg-7 row" style="margin-top: 10%;">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="text-align: left;">도서대여</div>
+			<div class="panel-body" style="text-align: left;">
+				<div class="col-lg-3">
+					<img src="/resources/img/bookmark.ico">
+				</div>
+				<div class="col-lg-1"></div>
+				<div>
+					<form action="/lib/adminRental" method="post">
+					
+						<fieldset class="col-lg-4">
+							<legend style="color: gray;">Rental</legend>
+							
+							<!-- 도서코드 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								*도서코드 :
+								<input class="form-control" id="BOOKCODE" name="BOOKCODE" placeholder="도서코드를 입력하세요" type="text" required>
 							</div>
-							<br /><br />
-							<div class="col-sm-6 form-group" style="margin-top: -190px; margin-left: 350px; color: gray;">
-								대여일 : <br />
+							
+							<!-- 대여일 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								대여일 :
 								<input id="RentalDate" class="form-control" readonly="readonly" placeholder="대여일을 선택하세요" type="text" required>
 							</div>
-							<br /><br />
-							<div class="col-sm-6 form-group" style="margin-top: -170px; margin-left: 350px; color: gray;">
-								반납예정일 : <br />
+							
+							<!-- 반납예정일 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								반납예정일 :
 								<input id="returnExpectDate" class="form-control" readonly="readonly" placeholder="반납예정일을 선택하세요" type="text" required>
 							</div>
-							<hr class="w3-border-grey" style="margin-left: 400px; margin-top:-50px; width: 40%">
-							<div class="col-sm-6 form-group" style="margin-top: 10px; margin-left: 350px; color: gray;">
+							
+							<!-- 라인 -->
+							<hr class="w3-border-grey" style="width: 100%">
+							
+							<!-- 회원정보 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
 								*회원ID : <br />
-								<input class="form-control" name="MEMBERID" placeholder="회원ID를 입력하세요" type="text" required>
+								<input class="form-control" id="MEMBERID" name="MEMBERID" placeholder="회원ID를 입력하세요" type="text" required>
 								<!-- 선불 / 후불 선택 : 
 								<input type="radio" >선불
 								<input type="radio" >후불 -->
+								
+								<!-- 공백 -->
+								<div class="col-lg-12 form-group" style="color: gray;"></div>
+								
+								<!-- 달력에서 선택한 날짜 문자열 출력 -->
 								*결제일<br />
 								<input type="text" id="testDatepicker" name="PAYMENTDAY">
+								
+								<!-- 일반회원 / 정회원 -->
 								<br />*일반회원 / 정회원 선택 : <br />
 								<input type="radio" value="1500" name="PAYMENTPRICE">일반회원
 								<input type="radio" value="1000" name="PAYMENTPRICE">정회원
+								<!-- 공백 -->
+								<div class="col-lg-12 form-group" style="color: gray;"></div>
+								<!-- 버튼 -->
 								<input class="btn pull-right" type="submit" value="대여" style="color: black;"/>
+								
 							</div>
-						</form>
-					</div>
+						</fieldset>
+						
+						<!-- ajax조회데이터 들어갈 필드셋 -->
+						<fieldset class="col-lg-4">
+							<legend style="color: gray;">Info</legend>
+							
+							<!-- 도서정보 -->
+							<div id="ReturnBookInfo" class="col-lg-12 form-group" style="color: gray;">
+							</div>
+							
+							<!-- 회원정보 -->
+							<div id="ReturnMemberInfo" class="col-lg-12 form-group" style="color: gray;">
+							</div>
+							
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</div>

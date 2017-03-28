@@ -134,6 +134,16 @@
 				BOOKCODE = #{BOOKCODE}
 	</update>
 	
+	<!-- 도서대여 전 회원아이디 입력시 ajax로 회원정보 가져오기 -->
+	<select id="memberRentalInfo"
+			resultType="com.library.eng.service.Vo.Member">
+			SELECT	eng_member.MEMBERNAME,
+					eng_member.MEMBERPHONE,
+					eng_member.MEMBERADDR
+			FROM	eng_member
+			WHERE	eng_member.MEMBERID = #{MEMBERID}
+	</select>
+	
 	<!-- 대여등록 -->
 	<insert id="insertRental"
 			parameterType="com.library.eng.service.Vo.Rental"

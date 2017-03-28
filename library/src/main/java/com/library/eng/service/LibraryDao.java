@@ -64,6 +64,13 @@ public class LibraryDao {
 		logger.debug(" Dao updateBookStatus");
 		return sqlSession.update(NS+"updateBookStatus", book);
 	}
+	
+	//관리자 도서대여/반납 관리 : 도서관리 - 도서대여/반납관리 - 도서대여 전 회원아이디 입력시 ajax로 회원정보 가져오기
+	public Member memberRentalInfo(String MEMBERID) {
+		logger.debug(" Dao memberRentalInfo");
+		return sqlSession.selectOne(NS+"memberRentalInfo", MEMBERID);
+	}
+	
 	//도서대여
 	public int insertRental(Rental rental) {
 		logger.debug(" Dao insertRental", rental.toString());
@@ -82,5 +89,6 @@ public class LibraryDao {
 		logger.debug(" Dao selectRentalList");
 		return sqlSession.selectList(NS+"selectRentalList");
 	}
+
 
 }

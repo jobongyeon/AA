@@ -15,71 +15,60 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 부트스트랩/css -->
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/adminHome.css">
+
 </head>
-<!-- 상단가로바 -->
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> 
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/lib/adminHome">Home</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/lib/adminLibrary">도서관관리</a></li>
-					<li><a href=/lib/adminBook>도서관리</a></li>
-					<li><a href="/lib/adminRental">도서대여/반납</a></li>
-					<li><a href="#pricing">회원관리</a></li>
-					<li><a href="/lib/adminLogout">로그아웃</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- 사이드바 -->
-	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px; margin-top:50px; margin-left: 150px;" id="mySidenav">
-		<br>
-		<div class="w3-container">
-			<br><br>
-			<h4 class="w3-padding-0">
-				<b>도서관관리</b>
-			</h4>
-		</div>
-		<a href="/lib/adminLibrary" onclick="w3_close()" class="w3-padding w3-text-teal">
-			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
-			도서관등록
-		</a>
-	</nav>
+
+<!-- 상단가로바 -->
+<%@include file="/WEB-INF/views/adminModule/adminHeadBar.jsp" %>
+
+<!-- 사이드바 -->
+<%@include file="/WEB-INF/views/adminModule/adminLibrarySideBar.jsp" %>
+
+	<!-- 공백주기 -->
+	<div class="col-lg-3"></div>
+	
 	<!-- 본문 -->
-	<div class="row">
-		<div class="col-md-7" style="margin-left: 450px; margin-top: 100px;">
-			<div class="panel panel-default" style="margin-top: 20px;">
-				<div class="panel-heading" style="text-align: left;">도서관등록</div>
-				<div class="panel-body" style="color: orange; text-align: left; margin-bottom: 50px;">
-					<img src="/resources/img/bookmark.ico" style="margin-left: 50px;">
-					<div class="row">
-						<form action="/lib/adminLibraryInsert" method="post">
-							<div class="col-sm-6 form-group" style="margin-top: -210px; margin-left: 350px; color: gray;">
-								도서관 이름 : <br />
+	<div class="col-lg-7 row" style="margin-top: 10%;">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="text-align: left;">도서관등록</div>
+			<div class="panel-body" style="text-align: left;">
+				<div class="col-lg-3">
+					<img src="/resources/img/bookmark.ico">
+				</div>
+				<div class="col-lg-2"></div>
+				<div>
+					<form action="/lib/adminLibraryInsert" method="post">
+					
+						<fieldset class="col-lg-5">
+							<legend style="color: gray;">Add</legend>
+							
+							<!-- 도서관 이름 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								도서관 이름 : 
 								<input name="LIBNAME" class="form-control" placeholder="도서관이름을 입력하세요" type="text" required>
 							</div>
-							<br /><br />
-							<div class="col-sm-6 form-group" style="margin-top: -190px; margin-left: 350px; color: gray;">
-								도서관위치 : <br />
+							
+							<!-- 도서관 위치 -->
+							<div class="col-lg-12 form-group" style="color: gray;">
+								도서관 위치 : 
 								<input name="LIBLOCATION" class="form-control" placeholder="도서관위치를 입력하세요" type="text" required>
 							</div>
-							<input class="btn pull-right" type="submit" value="도서등록" style="margin-right: 100px; margin-top: -110px; color: black;">
-						</form>
-					</div>
+							
+							<div class="col-lg-12 form-group">
+								<input class="btn pull-right" type="submit" value="도서등록" style="color: black;">
+							</div>
+						</fieldset>
+						
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
 	

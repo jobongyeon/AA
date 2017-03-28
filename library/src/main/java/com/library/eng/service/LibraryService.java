@@ -72,6 +72,13 @@ public class LibraryService {
 	public int updateBookStatus(Books book) {
 		return libDao.updateBookStatus(book);
 	}
+	
+	//관리자 도서대여/반납 관리 : 도서관리 - 도서대여/반납관리 - 도서대여 전 회원아이디 입력시 ajax로 회원정보 가져오기
+	public Member memberRentalInfo(String MEMBERID) {
+		logger.debug("Service memberRentalInfo");
+		return libDao.memberRentalInfo(MEMBERID);
+	}
+		
 	//도서 대여
 	public int addRental(Rental rental) {
 		return libDao.insertRental(rental);
@@ -87,6 +94,6 @@ public class LibraryService {
 		logger.debug(" service selectRentalList ");
 		return libDao.selectRentalList();		
 	}
-	
+
 
 }
