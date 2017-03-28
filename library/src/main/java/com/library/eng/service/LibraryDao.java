@@ -114,4 +114,10 @@ public class LibraryDao {
 		logger.debug(" Dao libraryCount");
 		return sqlSession.selectOne(NS+"libraryCount");
 	}
+	
+	//관리자 회원관리 : 회원관리 - 회원리스트 조회
+	public List<Member> adminMemberList() {
+		logger.debug(" Dao libraryCount");
+		return sqlSession.selectList(NS+"adminMemberList");
+	}
 }

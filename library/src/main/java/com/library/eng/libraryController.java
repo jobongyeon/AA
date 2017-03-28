@@ -210,4 +210,14 @@ public class libraryController {
 		service.addPayment(payment);
 		return "redirect:adminHome";
 	}
+	
+	//관리자 회원관리 : 회원관리 - 회원리스트 조회
+	@RequestMapping(value="/lib/adminMemberList", method=RequestMethod.GET)
+	public String adminMemberList(Model model) {
+		logger.debug("관리자 회원리스트 GET실행");
+		List<Member> adminMemberList = service.adminMemberList();
+		System.out.println("adminMemberList : "+adminMemberList);
+		model.addAttribute("adminMemberList", adminMemberList);
+		return "/adminMemberList";
+	}
 }

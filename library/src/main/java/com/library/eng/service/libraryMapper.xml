@@ -211,5 +211,20 @@
 				#{PAYMENTPRICE})
 	</insert>
 	
-
+	<!-- 관리자 회원관리 : 회원관리 - 회원리스트 조회 -->
+	<select id="adminMemberList"
+			resultType="com.library.eng.service.Vo.Member">
+			SELECT	eng_member.MEMBERID,
+					eng_member.MEMBERNAME,
+					eng_member.MEMBERBIRTHDAY,
+					eng_member.MEMBERPHONE,
+					eng_member.MEMBERADDR,
+					eng_member.JOINDAY,
+					eng_lib.LIBNAME,
+					eng_member.RENTALCOUNT,
+					eng_member.MEMBERPAYMENTSTATUS
+			FROM	eng_member
+			JOIN	eng_lib
+			ON		eng_member.LIBCODE = eng_lib.LIBCODE
+	</select>
 </mapper>

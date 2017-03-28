@@ -14,7 +14,7 @@
 
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://jby9215.cafe24.com/jby9215?useUnicod=true&amp;characterEncoding=euckr" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/jby9215?useUnicod=true&amp;characterEncoding=euckr" />
 		<beans:property name="username" value="jby9215" />
 		<beans:property name="password" value="whqhddus2015!" />
 	</beans:bean>

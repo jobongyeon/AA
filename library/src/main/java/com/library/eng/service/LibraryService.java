@@ -117,6 +117,10 @@ public class LibraryService {
 		logger.debug(" service libraryCount ");
 		return libDao.libraryCount();
 	}
-
-
+	
+	//관리자 회원관리 : 회원관리 - 회원리스트 조회
+	public List<Member> adminMemberList() {
+		logger.debug(" service adminMemberList ");
+		return libDao.adminMemberList();
+	}
 }
