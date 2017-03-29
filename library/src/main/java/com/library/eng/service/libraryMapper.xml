@@ -125,6 +125,25 @@
 				)
 	</insert>
 	
+	<!-- 관리자 도서 관리 도서등록 : 도서관리 - 도서목록 -->
+	<select id="adminBooksList"
+			resultType="com.library.eng.service.Vo.Books">
+			SELECT	eng_books.BOOKNAME,
+					eng_books.WRITER,
+					eng_books.PUBLISHER,
+					eng_books.CATEGORY,
+					eng_books.GENRE,
+					eng_lib.LIBNAME,
+					eng_books.BOOKLOCATION,
+					eng_books.CURRENTSTATUS,
+					eng_books.FIRSTRENTALDAY,
+					eng_books.RENTALCOUNT,
+					eng_books.RENTALDAYS
+			FROM	eng_books
+			JOIN	eng_lib
+			ON		eng_books.LIBCODE = eng_lib.LIBCODE
+	</select>
+	
 	<!-- 도서 폐기 -->
 	<insert id="bookDelete"
 			parameterType="com.library.eng.service.Vo.Discardbooks">

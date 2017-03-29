@@ -20,17 +20,27 @@ public class LibraryService {
 	private LibraryDao libDao;
 	private static final Logger logger = LoggerFactory.getLogger(LibraryService.class);
 	
+	/*********************************************************************
+	 회원
+	**********************************************************************/
+
 	//회원가입 폼에서 도서관 리스트 보여주는 메서드
 	public List<Library> getselectLibcodeForInsert() {
-		logger.debug(this.getClass()+"getselectLibcodeForInsert");
+		logger.debug("Service getselectLibcodeForInsert");
 		List<Library> list = libDao.selectLibcodeForInsert();
 		logger.debug(list.toString());
 		return list;
 	}
+	
 	//회원가입 메서드
 	public int addMember(Member member) {
 		return libDao.insertMember(member);
 	}
+	
+	/*********************************************************************
+	 관리자로그인
+	**********************************************************************/
+
 	//관리자 로그인
 	public Admin getSelectAdminForLogin(Admin admin) {
 		//화면에서 받아온 값
@@ -49,13 +59,25 @@ public class LibraryService {
 			return null;
 		}
 	}
+	
+	/*********************************************************************
+	 관리자
+	**********************************************************************/
+	
 	//도서관 추가
 	public int addLibrary(Library library) {
 		return libDao.insertLibrary(library);
 	}
+	
 	//도서추가
 	public int addBook(Books book) {
 		return libDao.insertBook(book);		
+	}
+	
+	//관리자 도서 관리 도서등록 : 도서관리 - 도서목록
+	public List<Books> adminBooksList() {
+		logger.debug("Service adminBooksList");
+		return libDao.adminBooksList();
 	}
 	//도서폐기
 	public int deleteBook(Discardbooks discardbooks) {
@@ -89,6 +111,7 @@ public class LibraryService {
 	public int addPayment(Payment payment) {
 		return libDao.insertPayment(payment);
 	}
+	
 	//관리자 메인페이지 : 도서대출현황
 	public List<Rental> selectRentalList() {
 		logger.debug(" service selectRentalList ");
@@ -112,6 +135,7 @@ public class LibraryService {
 		logger.debug(" service memberCount ");
 		return libDao.memberCount();
 	}
+	
 	//관리자 메인페이지 : 전체도서관 카운트
 	public Library libraryCount() {
 		logger.debug(" service libraryCount ");
@@ -123,4 +147,5 @@ public class LibraryService {
 		logger.debug(" service adminMemberList ");
 		return libDao.adminMemberList();
 	}
+
 }

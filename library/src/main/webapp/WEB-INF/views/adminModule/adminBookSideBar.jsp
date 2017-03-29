@@ -16,6 +16,10 @@
 			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
 			도서등록
 		</a>
+		<a href="/lib/adminBooksList" onclick="w3_close()" class="w3-padding w3-text-teal">
+			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
+			도서목록
+		</a>
 		<a href="/lib/adminBookDelete" onclick="w3_close()" class="w3-padding w3-text-teal">
 			<i class="fa fa-th-large fa-fw w3-margin-right"></i>
 			도서폐기

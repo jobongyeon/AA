@@ -156,6 +156,15 @@ public class libraryController {
 		return "redirect:adminHome";
 	}
 	
+	//관리자 도서 관리 도서등록 : 도서관리 - 도서목록
+	@RequestMapping(value="/lib/adminBooksList", method=RequestMethod.GET)
+	public String adminBookList(Model model) {
+		logger.debug("관리자 도서관리 도서목록 GET실행");
+		List<Books> adminBooksList = service.adminBooksList();
+		model.addAttribute("adminBooksList", adminBooksList);
+		return "/adminBooksList";
+	}
+	
 	//관리자 도서 관리 : 상단 도서관리 메뉴 클릭시 도서폐기화면으로 이동
 	@RequestMapping(value="/lib/adminBookDelete", method=RequestMethod.GET)
 	public String adminBookDelete() {
@@ -178,7 +187,7 @@ public class libraryController {
 		logger.debug("관리자 도서관리 도서폐기 전 도서정보 조회 POST실행");
 		Books adminBookInfo = service.adminBookInfo(BOOKCODE);
 		logger.debug("adminBookInfo : "+adminBookInfo.toString());	//test log
-		System.out.println(adminBookInfo.toString());
+		logger.debug(adminBookInfo.toString());
 		return adminBookInfo;
 	}
 	
@@ -216,7 +225,7 @@ public class libraryController {
 	public String adminMemberList(Model model) {
 		logger.debug("관리자 회원리스트 GET실행");
 		List<Member> adminMemberList = service.adminMemberList();
-		System.out.println("adminMemberList : "+adminMemberList);
+		logger.debug("adminMemberList : "+adminMemberList);
 		model.addAttribute("adminMemberList", adminMemberList);
 		return "/adminMemberList";
 	}
