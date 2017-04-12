@@ -41,6 +41,13 @@ public class libraryController {
 		return "/memberHome";
 	}
 	
+	//회원 가입페이지 중복확인 : 회원가입 전 회원 가입중복확인 0412수정중
+	@RequestMapping(value="/lib/memberOverLapCheck", method=RequestMethod.POST )
+	public String memberOverLapCheck() {
+		logger.debug("회원가입 회원아이디 중복체크");
+		return null;
+	}
+	
 	//회원 가입페이지 도서관 목록 조회 : 회원가입시 도서관 리스트 조회하는 메서드
 	@RequestMapping(value="/lib/memberAdd", method=RequestMethod.GET)
 	public String selectLibcodeForMemberAdd(Model model) {

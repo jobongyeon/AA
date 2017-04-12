@@ -31,41 +31,66 @@ body, html {
 </head>
 <body>
 	<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+	
+		<!-- 상단텍스트 -->
 		<div class="w3-display-topleft w3-padding-large w3-xlarge" style="color: black">전주영어도서관</div>
-		<div class="w3-white w3-margin">
-			<div class="w3-display-middle">
-				<div class="w3-light-grey w3-padding-xlarge w3-padding-32 w3-margin-top" id="contact">
-					<h3 class="w3-center">회원가입</h3>
-					<hr>
-					<p>다음 여섯가지 사항을 입력해 주십시오. 입력 후 계좌로 회비 입금시 회원등급으로 승인이 됩니다.</p>
+		
+			<!-- 본문  -->
+			<div class="w3-display-middle w3-light-grey w3-padding-xlarge w3-padding-32 w3-margin-top">
+			
+				<h3 class="w3-center">회원가입</h3>
+				
+				<!-- 라인 -->
+				<hr>
+				
+				<p style="text-align: center;">다음 여섯가지 사항을 입력해 주십시오. <br/>입력 후 계좌로 회비 입금시 회원등급으로 승인이 됩니다.</p>
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
 					<form action="/lib/memberAdd" method="post">
-						<div class="form-group, col-md-12">
-							<label for="usr">아이디 :</label>
+					
+						<!-- 아이디 -->
+						<div class="form-group col-md-8">
+							<label>아이디 :</label>
 							<input type="text" class="form-control" id="MEMBERID" name="MEMBERID">
-							<!-- <input type="button" value="중복확인" style="margin-left: 521px;"/> -->
 						</div>
-						<div class="form-group, col-md-12">
-							<label for="usr">패스워드 :</label>
+						
+						<div class="form-group col-md-2">
+							<label>&nbsp;</label>
+							<input type="button" class="btn" value="중복확인"/>
+						</div>
+						
+						<!-- 패스워드 -->
+						<div class="form-group col-md-12">
+							<label>패스워드 :</label>
 							<input type="password" class="form-control" id="MEMBERPW" name="MEMBERPW">
 						</div>
-						<div class="form-group, col-md-12">
-							<label for="usr">이름 :</label>
+						
+						<!-- 이름 -->
+						<div class="form-group col-md-12">
+							<label>이름 :</label>
 							<input type="text" class="form-control" id="MEMBERNAME" name="MEMBERNAME">
 						</div>
-						<div class="form-group, col-md-12">
-							<label for="usr">생년월일 :</label>
+						
+						<!-- 생년월일 -->
+						<div class="form-group col-md-12">
+							<label>생년월일 :</label>
 							<input type="text" class="form-control" id="MEMBERBIRTHDAY" name="MEMBERBIRTHDAY">
 						</div>
-						<div class="form-group, col-md-12">
-							<label for="usr">전화번호 :</label>
+						
+						<!-- 전화번호 -->
+						<div class="form-group col-md-12">
+							<label>전화번호 :</label>
 							<input type="text" class="form-control" id="MEMBERPHONE" name="MEMBERPHONE">
 						</div>
-						<div class="form-group, col-md-12">
-							<label for="usr">주소 :</label>
+						
+						<!-- 주소 -->
+						<div class="form-group col-md-12">
+							<label>주소 :</label>
 							<input type="text" class="form-control" id="MEMBERADDR" name="MEMBERADDR">
 							<!-- <input type="button" value="주소확인" style="margin-left: 521px;"/> -->
 						</div>
-						<div class="container, col-md-12"> 
+						
+						<div class="form-group col-md-12"> 
 							도서관선택 : 
 							<select class="form-control" id="LIBCODE" name="LIBCODE">
 								<c:forEach var="l" items="${list }">
@@ -73,10 +98,12 @@ body, html {
 								</c:forEach>
 							</select>
 						</div>
-						<input type="submit" value="회원가입" class="w3-btn  w3-padding-12 w3-dark-grey" style="margin-top: 20px; margin-left: 660px;">
+						<div class="form-group col-md-12"> 
+							<input type="submit" value="회원가입" class="w3-btn w3-padding-12 w3-dark-grey" style="float: right;">
+						</div>
 					</form>
-					<br/>
 				</div>
+				<br/>
 			</div>
 		</div>
 		<div class="w3-display-bottomleft w3-padding-large"	style="color: black">
@@ -85,6 +112,6 @@ body, html {
 				JBY
 			</a>
 		</div>
-	</div>
+
 </body>
 </html>

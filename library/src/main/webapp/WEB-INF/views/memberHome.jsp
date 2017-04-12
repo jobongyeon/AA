@@ -43,7 +43,7 @@ body, html {
 				회원이 되시려면 <br/>
 				<br/>▷ 온라인으로 가입신청 
 				<br/>▷ 연회비 : 7만원 
-				<br/>▷ 온라인 계좌 : 농협	111111-111-111111
+				<br/>▷ 온라인 계좌 : 농협 111111-111-111111
 			</p>
 			<div style="position: absolute; left: 305px; top: 330px;">
 				<a href="/lib/memberAdd">
